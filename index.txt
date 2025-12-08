@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Ewelina Czachor – Fizjoterapia | Trening personalny | Wellness</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ewelina Czachor – fizjoterapia, trening personalny oraz holistyczne podejście do wellness i pielęgnacji. Kompleksowa opieka ruchowa i zdrowotna.">
+    <style>
+        :root {
+            --primary: #0a3d62;
+            --primary-light: #1266a3;
+            --accent: #20bf6b;
+            --bg: #f5f7f8;
+            --text: #222;
+            --muted: #6c7a89;
+            --white: #ffffff;
+            --shadow: 0 14px 28px rgba(0,0,0,0.08), 0 10px 10px rgba(0,0,0,0.05);
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: rgba(10,61,98,0.96);
+            color: var(--white);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            display: flex;
+            flex-direction: column;
+            font-size: 0.9rem;
+        }
+
+        .brand span:first-child {
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        .brand span:last-child {
+            font-size: 0.75rem;
+            color: #d0e6ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a {
+            padding: 6px 10px;
+            border-radius: 999px;
+            transition: background 0.2s, color 0.2s, transform 0.1s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-1px);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: #fff !important;
+            padding: 6px 14px !important;
+            border-radius: 999px;
+            font-weight: 600;
+        }
+
+        .nav-cta:hover {
+            background: #1b9e5a;
+        }
+
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.4rem;
+        }
+
+        /* LAYOUT OGÓLNY */
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 10px 18px 40px 18px;
+        }
+
+        section {
+            margin-top: 40px;
+        }
+
+        /* HERO */
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+            gap: 30px;
+            align-items: center;
+            padding: 40px 0 20px 0;
+        }
+
+        .hero-kicker {
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 3.2vw, 2.8rem);
+            margin: 10px 0;
+            color: var(--primary);
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 0.98rem;
+            max-width: 520px;
+        }
+
+        .hero-actions {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 999px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow);
+            transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.2s;
+        }
+
+        .btn-primary span {
+            font-size: 1.1rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            background: #1b9e5a;
+            box-shadow: 0 16px 30px rgba(0,0,0,0.12);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 999px;
+            border: 1px solid rgba(10,61,98,0.25);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+
+        .btn-ghost:hover {
+            background: rgba(10,61,98,0.06);
+            border-color: var(--primary);
+        }
+
+        .hero-badges {
+            margin-top: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .badge {
+            background: #e2f5ec;
+            color: #117a4b;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .hero-card {
+            background: var(--white);
+            border-radius: 22px;
+            padding: 22px 20px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle at top, rgba(32,191,107,0.25), transparent 60%);
+            top: -60px;
+            right: -80px;
+            opacity: 0.9;
+        }
+
+        .hero-card-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-portrait {
+            width: 100%;
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .hero-card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .hero-card p {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .hero-highlights {
+            margin-top: 12px;
+            font-size: 0.88rem;
+        }
+
+        .hero-highlights li {
+            margin-bottom: 4px;
+        }
+
+        /* SEKCJE */
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+            gap: 26px;
+            align-items: flex-start;
+        }
+
+        .pill-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .pill-list li {
+            background: #fff;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 18px 18px 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .card ul {
+            padding-left: 18px;
+            margin-top: 6px;
+            font-size: 0.9rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            margin-bottom: 4px;
+        }
+
+        /* BLOG */
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+        }
+
+        .blog-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 16px 18px 18px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        }
+
+        .blog-card h3 {
+            margin: 6px 0;
+            font-size: 1rem;
+            color: var(--primary);
+        }
+
+        .blog-card p {
+            font-size: 0.88rem;
+            color: var(--muted);
+        }
+
+        /* GALERIA */
+
+        .gallery-placeholder {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+        }
+
+        /* KONTAKT */
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+            gap: 24px;
+            align-items: center;
+        }
+
+        .contact-details p {
+            margin: 4px 0;
+        }
+
+        .contact-details a {
+            color: var(--primary-light);
+            font-weight: 500;
+        }
+
+        .qr-wrapper {
+            text-align: center;
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 16px 16px 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .qr-wrapper img {
+            width: 180px;
+            max-width: 60vw;
+            display: block;
+            margin: 0 auto 8px auto;
+        }
+
+        .qr-wrapper p {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* STOPKA */
+
+        footer {
+            background: var(--primary);
+            color: #d0e6ff;
+            text-align: center;
+            padding: 16px;
+            font-size: 0.8rem;
+            margin-top: 20px;
+        }
+
+        /* ANIMACJE / WEJŚCIE */
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .fade-in.delay-1 {
+            animation-delay: 0.15s;
+        }
+        .fade-in.delay-2 {
+            animation-delay: 0.3s;
+        }
+        .fade-in.delay-3 {
+            animation-delay: 0.45s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSYWNOŚĆ */
+
+        @media (max-width: 800px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            .hero-card {
+                order: -1;
+            }
+            .two-col,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .nav-links {
+                position: absolute;
+                top: 52px;
+                right: 0;
+                background: rgba(10,61,98,0.97);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 18px 14px;
+                gap: 10px;
+                min-width: 180px;
+                display: none;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <div class="brand">
+            <span>Ewelina Czachor</span>
+            <span>Fizjoterapia • Trening • Wellness</span>
+        </div>
+        <div class="nav-toggle" id="navToggle">☰</div>
+        <div class="nav-links" id="navLinks">
+            <a href="#start">Start</a>
+            <a href="#o-mnie">O mnie</a>
+            <a href="#oferta">Oferta</a>
+            <a href="#wellness">Wellness</a>
+            <a href="#galeria">Galeria</a>
+            <a href="#blog">Blog</a>
+            <a href="#kontakt" class="nav-cta">Kontakt</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <!-- HERO / START -->
+    <section id="start" class="hero">
+        <div class="fade-in">
+            <div class="hero-kicker">Kompleksowa opieka ruchowa i zdrowotna</div>
+            <h1>Fizjoterapia, trening personalny i wellness w jednym miejscu</h1>
+            <p>
+                Pomagam osobom, które chcą poprawić swoją sprawność, zredukować ból i zadbać o zdrowie
+                w sposób świadomy i długofalowy. Łączę nowoczesną fizjoterapię, trening funkcjonalny
+                oraz holistyczne podejście do stylu życia.
+            </p>
+            <div class="hero-actions">
+                <a href="#kontakt">
+                    <button class="btn-primary">
+                        Umów się na kontakt <span>→</span>
+                    </button>
+                </a>
+                <a href="#oferta">
+                    <button class="btn-ghost">
+                        Zobacz, jak mogę pomóc
+                    </button>
+                </a>
+            </div>
+            <div class="hero-badges">
+                <span class="badge">Ruch • Siła • Regeneracja</span>
+                <span class="badge">Podejście indywidualne</span>
+            </div>
+        </div>
+
+        <div class="hero-card fade-in delay-1">
+            <div class="hero-card-inner">
+                <img src="portret-ewelina.jpg" alt="Ewelina Czachor – trener personalny i fizjoterapeutka" class="hero-portrait">
+                <h3>Twoje ciało. Twój plan. Twoje tempo.</h3>
+                <p>
+                    Każda współpraca zaczyna się od rozmowy, analizy potrzeb i możliwości. Na tej podstawie
+                    dobieram terapię, trening oraz wsparcie wellness, tak aby realnie poprawić komfort Twojego życia.
+                </p>
+                <ul class="hero-highlights">
+                    <li>• Fizjoterapia ukierunkowana na funkcję, nie tylko na objawy</li>
+                    <li>• Trening medyczny i funkcjonalny dopasowany do poziomu</li>
+                    <li>• Holistyczne wsparcie stylu życia i regeneracji</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- O MNIE -->
+    <section id="o-mnie" class="fade-in delay-1">
+        <h2 class="section-title">O mnie</h2>
+        <p class="section-subtitle">Profesjonalne, holistyczne podejście do pracy z ciałem</p>
+        <div class="two-col">
+            <div>
+                <p>
+                    Nazywam się <strong>Ewelina Czachor</strong> i specjalizuję się w holistycznym podejściu do pracy z ciałem.
+                    Jako fizjoterapeutka i trener personalny łączę podejście medyczne, analizę ruchu oraz świadomy trening.
+                    Wspieram osoby zmagające się z bólem, przeciążeniami oraz te, które chcą poprawić swoją formę i
+                    funkcjonalność na co dzień.
+                </p>
+                <p>
+                    Pracuję zarówno z osobami wracającymi do sprawności po urazach, jak i z osobami, które dopiero
+                    rozpoczynają swoją przygodę z ruchem. Zależy mi na tym, abyś nie tylko „wyszedł z bólu”, ale również
+                    nauczył się dbać o ciało w długiej perspektywie.
+                </p>
+            </div>
+            <div>
+                <img src="o-mnie.jpg" alt="Ewelina Czachor podczas pracy z podopiecznym" style="width:100%;border-radius:16px;box-shadow:var(--shadow);margin-bottom:12px;">
+                <p><strong>W pracy kieruję się:</strong></p>
+                <ul class="pill-list">
+                    <li>podejściem indywidualnym</li>
+                    <li>bezpieczeństwem terapii i treningu</li>
+                    <li>konkretną, praktyczną edukacją</li>
+                    <li>holistycznym spojrzeniem na ciało</li>
+                </ul>
+                <p style="font-size:0.9rem;color:var(--muted);margin-top:8px;">
+                    W obszarze wellness współpracuję z marką Arbonne, dzięki czemu mogę uzupełniać pracę z ruchem
+                    o świadome nawyki, pielęgnację oraz wsparcie zdrowego stylu życia.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFERTA -->
+    <section id="oferta" class="fade-in delay-1">
+        <h2 class="section-title">Oferta</h2>
+        <p class="section-subtitle">Fizjoterapia, trening personalny i wsparcie ruchowe dopasowane do Ciebie</p>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="tag">Fizjoterapia</div>
+                <h3>Terapia bólu i przeciążeń</h3>
+                <p>
+                    Indywidualna praca terapeutyczna ukierunkowana na redukcję bólu, poprawę zakresu ruchu oraz
+                    przywrócenie prawidłowej funkcji układu mięśniowo–szkieletowego.
+                </p>
+                <ul>
+                    <li>bóle i przeciążenia kręgosłupa</li>
+                    <li>sztywność i ograniczenia zakresu ruchu</li>
+                    <li>napięcia wynikające z pracy siedzącej lub stresu</li>
+                    <li>profilaktyka wad postawy</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="tag">Trening personalny</div>
+                <h3>Trening medyczny i funkcjonalny</h3>
+                <p>
+                    Spersonalizowany proces treningowy oparty na analizie ruchu, technice oraz stopniowej progresji.
+                    Bez względu na poziom zaawansowania, trening dopasowuję do Twoich możliwości.
+                </p>
+                <ul>
+                    <li>budowanie siły i stabilizacji</li>
+                    <li>poprawa mobilności i kontroli ruchu</li>
+                    <li>korekcja wzorców ruchowych</li>
+                    <li>wsparcie po urazach i kontuzjach</li>
+                </ul>
+            </div>
+
+            <div class="card" id="wellness">
+                <div class="tag">Wellness & Arbonne</div>
+                <h3>Holistyczne wsparcie stylu życia</h3>
+                <p>
+                    Uzupełnienie pracy ruchowej o elementy świadomego dbania o siebie na co dzień – rytuały, pielęgnacja,
+                    regeneracja oraz zdrowe nawyki.
+                </p>
+                <ul>
+                    <li>edukacja wellness</li>
+                    <li>wspieranie codziennych, zdrowych nawyków</li>
+                    <li>rekomendacje pielęgnacyjne z wykorzystaniem Arbonne</li>
+                    <li>balans między aktywnością a regeneracją</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section id="galeria" class="fade-in delay-2">
+        <h2 class="section-title">Galeria</h2>
+        <p class="section-subtitle">Przestrzeń pracy i przykładowe elementy treningu</p>
+        <div class="gallery-placeholder">
+            <img src="band.png.jpg" alt="Ćwiczenia oporowe" class="gallery-img">
+            <img src="bars.png" alt="Sztangi" class="gallery-img">
+            <img src="stretching.png" alt="Rozciąganie" class="gallery-img">
+            <img src="yoga.png" alt="Yoga" class="gallery-img">
+            <img src="stripes.png" alt="Yoga" class="gallery-img">
+            <img src="step.png" alt="Step" class="gallery-img">
+        </div>
+    </section>
+
+    <!-- BLOG -->
+    <section id="blog" class="fade-in delay-2">
+        <h2 class="section-title">Blog</h2>
+        <p class="section-subtitle">Edukacja i praktyczne wskazówki dotyczące ruchu, zdrowia i regeneracji</p>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <span class="tag">Artykuł</span>
+                <h3>Najczęstsze przyczyny bólu kręgosłupa u osób pracujących przy biurku</h3>
+                <p>
+                    Ból pleców to jedna z najczęstszych dolegliwości współczesnych pracowników biurowych.
+                    Wyjaśniam, skąd się bierze oraz jakie proste działania mogą przynieść realną poprawę.
+                </p>
+            </div>
+            <div class="blog-card">
+                <span class="tag">Artykuł</span>
+                <h3>Trening medyczny jako element rehabilitacji</h3>
+                <p>
+                    Trening medyczny to pomost między fizjoterapią a powrotem do pełnej aktywności.
+                    Zobacz, jak wygląda proces oraz jakie zasady decydują o jego skuteczności.
+                </p>
+            </div>
+            <div class="blog-card">
+                <span class="tag">Artykuł</span>
+                <h3>Holistyczne podejście do zdrowia – dlaczego warto?</h3>
+                <p>
+                    Łączenie ruchu, regeneracji i zdrowych nawyków przekłada się nie tylko na lepszą formę,
+                    ale też na większy komfort życia na co dzień.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt" class="fade-in delay-3">
+        <h2 class="section-title">Kontakt</h2>
+        <p class="section-subtitle">Zrób pierwszy krok – resztą zajmiemy się razem</p>
+        <div class="contact-grid">
+            <div class="contact-details">
+                <p><strong>Imię i nazwisko:</strong> Ewelina Czachor</p>
+                <p><strong>Telefon:</strong> <a href="tel:+48723981333">723 981 333</a></p>
+                <p><strong>E-mail:</strong> <a href="mailto:twojmail@example.com">twojmail@example.com</a></p>
+                <p><strong>Instagram:</strong> <a href="https://instagram.com/" target="_blank" rel="noopener">[tu wstaw profil]</a></p>
+                <p style="margin-top:10px;font-size:0.9rem;color:var(--muted);">
+                    Skontaktuj się, jeżeli chcesz omówić swoją sytuację, cele lub możliwości współpracy.
+                    Odpowiem na Twoje pytania i pomogę dobrać najlepszą formę wsparcia.
+                </p>
+            </div>
+            <div class="qr-wrapper">
+                <img src="kod_qr_ewelina_czachor_aktualny.png" alt="Kod QR – wizytówka Eweliny Czachor">
+                <p>Zeskanuj kod QR, aby szybko zapisać dane kontaktowe w swoim telefonie.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    © 2025 Ewelina Czachor – Fizjoterapia • Trening personalny • Wellness
+</footer>
+
+<script>
+    // Prosty toggle menu mobilnego
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+
+    // Zamknięcie menu po kliknięciu w link (na telefonie)
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+        });
+    });
+</script>
+
+</body>
+</html>
