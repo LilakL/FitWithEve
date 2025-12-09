@@ -415,6 +415,7 @@
             border-radius: var(--radius);
             padding: 16px 16px 18px;
             box-shadow: var(--shadow);
+            max-width: 260px;
         }
 
         .qr-wrapper img {
@@ -428,6 +429,49 @@
             font-size: 0.8rem;
             color: var(--muted);
             margin: 0;
+        }
+
+        .contact-form {
+            background: #fff;
+            padding: 20px 22px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-top: 24px;
+            max-width: 520px;
+        }
+
+        .contact-form h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .contact-form label {
+            font-size: 0.9rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            align-self: flex-start;
         }
 
         /* STOPKA */
@@ -710,21 +754,51 @@
     <section id="kontakt" class="fade-in delay-3">
         <h2 class="section-title">Kontakt</h2>
         <p class="section-subtitle">Zrób pierwszy krok – resztą zajmiemy się razem</p>
-        <div class="contact-grid">
-            <div class="contact-details">
-                <p><strong>Imię i nazwisko:</strong> Ewelina Czachor</p>
-                <p><strong>Telefon:</strong> <a href="tel:+48723981333">723 981 333</a></p>
-                <p><strong>E-mail:</strong> <a href="lilakl@yahoo.pl">lilakl@yahoo.pl</a></p>
-                <p><strong>Instagram:</strong> <a href="https://instagram.com/" target="_blank" rel="noopener">[tu wstaw profil]</a></p>
-                <p style="margin-top:10px;font-size:0.9rem;color:var(--muted);">
-                    Skontaktuj się, jeżeli chcesz omówić swoją sytuację, cele lub możliwości współpracy.
-                    Odpowiem na Twoje pytania i pomogę dobrać najlepszą formę wsparcia.
-                </p>
-            </div>
-            <div class="qr-wrapper">
-                <img src="qr.png" alt="Kod QR – wizytówka Eweliny Czachor">
-                <p>Zeskanuj kod QR, aby szybko zapisać dane kontaktowe w swoim telefonie.</p>
-            </div>
+
+        <div class="contact-details">
+            <p><strong>Imię i nazwisko:</strong> Ewelina Czachor</p>
+            <p><strong>Telefon:</strong> <a href="tel:+48723981333">723 981 333</a></p>
+            <p><strong>E-mail:</strong> <a href="mailto:blabla800308@gmail.com">blabla800308@gmail.com</a></p>
+            <p><strong>Instagram:</strong> <a href="https://instagram.com/" target="_blank" rel="noopener">[tu wstaw profil]</a></p>
+            <p style="margin-top:10px;font-size:0.9rem;color:var(--muted);">
+                Skontaktuj się, jeżeli chcesz omówić swoją sytuację, cele lub możliwości współpracy.
+                Odpowiem na Twoje pytania i pomogę dobrać najlepszą formę wsparcia.
+            </p>
+        </div>
+
+        <div class="qr-wrapper" style="margin-top:20px;">
+            <img src="qr.png" alt="Kod QR – wizytówka Eweliny Czachor">
+            <p>Zeskanuj kod QR, aby szybko zapisać dane kontaktowe w swoim telefonie.</p>
+        </div>
+
+        <!-- FORMULARZ KONTAKTOWY -->
+        <div class="contact-form">
+            <h3>Wyślij wiadomość</h3>
+            <form action="send.php" method="post">
+                <div>
+                    <label for="name">Imię i nazwisko:</label><br>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div>
+                    <label for="email">Adres e-mail:</label><br>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div>
+                    <label for="subject">Temat wiadomości:</label><br>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+
+                <div>
+                    <label for="message">Wiadomość (max 300 znaków):</label><br>
+                    <textarea id="message" name="message" maxlength="300" required></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">
+                    Wyślij wiadomość
+                </button>
+            </form>
         </div>
     </section>
 </main>
