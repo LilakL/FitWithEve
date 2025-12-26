@@ -79,3 +79,176 @@ section.alt{
 .btn-primary{
     background:var(--accent);
     color:#fff;
+    padding:13px 28px;
+    border-radius:999px;
+    border:none;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:var(--shadow-soft);
+    transition:.25s;
+}
+.btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:var(--shadow-hover);
+}
+.btn-ghost{
+    background:transparent;
+    border:1px solid rgba(10,61,98,.3);
+    padding:11px 24px;
+    border-radius:999px;
+}
+
+.card,.hero-card{
+    background:#fff;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow-soft);
+    padding:26px;
+    transition:.3s;
+}
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow-hover);
+}
+.cards-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:26px;
+}
+
+.hero-card img{
+    border-radius:18px;
+    margin-bottom:16px;
+}
+
+/* GALERIA */
+.gallery-pro{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:26px;
+}
+.gallery-pro figure{
+    background:#fff;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:var(--shadow-soft);
+    transition:.35s;
+}
+.gallery-pro figure:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow-hover);
+}
+.gallery-pro img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+.gallery-pro figcaption{
+    padding:16px 18px;
+    font-size:.9rem;
+    color:var(--muted);
+}
+
+.qr-image{
+    display:flex;
+    justify-content:center;
+    margin-top:30px;
+}
+.qr-image img{
+    width:220px;
+    border-radius:22px;
+    box-shadow:0 15px 35px rgba(0,0,0,.18);
+}
+
+footer{
+    background:var(--primary);
+    color:#cde5ff;
+    text-align:center;
+    padding:18px;
+    font-size:.8rem;
+}
+
+@media(max-width:768px){
+    .hero{grid-template-columns:1fr}
+    section.alt{padding:40px 20px}
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+<div class="nav-inner">
+<div>
+<strong>Ewelina Czachor</strong><br>
+<small>Fizjoterapia • Trening • Wellness</small>
+</div>
+<div class="nav-links">
+<a href="#oferta">Oferta</a>
+<a href="#galeria">Galeria</a>
+<a href="#kontakt" class="nav-cta">Kontakt</a>
+</div>
+</div>
+</nav>
+
+<main>
+
+<section class="hero">
+<div>
+<h1>Holistyczna fizjoterapia i trening</h1>
+<p>Świadoma praca z ciałem, redukcja bólu, poprawa sprawności i regeneracja.</p>
+<div class="hero-actions">
+<a href="#kontakt" class="btn-primary">Umów konsultację</a>
+<a href="#oferta" class="btn-ghost">Poznaj ofertę</a>
+</div>
+</div>
+<div class="hero-card">
+<img src="portret-ewelina.jpg" alt="Ewelina Czachor – fizjoterapeutka">
+<h3>Twoje ciało. Twój plan.</h3>
+<p>Indywidualne podejście i długofalowe efekty.</p>
+</div>
+</section>
+
+<section id="oferta" class="alt">
+<h2>Oferta</h2>
+<div class="cards-grid">
+<div class="card"><h3>Fizjoterapia</h3><p>Redukcja bólu, terapia manualna, powrót do sprawności.</p></div>
+<div class="card"><h3>Trening personalny</h3><p>Bezpieczny trening funkcjonalny dopasowany do Ciebie.</p></div>
+<div class="card"><h3>Wellness</h3><p>Regeneracja, oddech i holistyczne wsparcie stylu życia.</p></div>
+</div>
+</section>
+
+<section id="galeria" class="alt">
+<h2>Jak pracuję</h2>
+<p style="color:var(--muted);max-width:70ch">
+Ruch, świadomość ciała i indywidualne podejście to fundament mojej pracy.
+</p>
+
+<div class="gallery-pro">
+<figure><img src="band.png" alt="Ćwiczenia z gumą oporową"><figcaption>Ćwiczenia z gumą oporową – stabilizacja</figcaption></figure>
+<figure><img src="bars.png" alt="Trening siłowy"><figcaption>Trening siłowy – bezpieczna praca z obciążeniem</figcaption></figure>
+<figure><img src="step.png" alt="Zajęcia grupowe"><figcaption>Zajęcia grupowe – trening funkcjonalny</figcaption></figure>
+<figure><img src="stretching.png" alt="Trening z hantlami"><figcaption>Wzmocnienie całego ciała</figcaption></figure>
+<figure><img src="stripes.png" alt="Taśmy oporowe"><figcaption>Mobilność i siła z taśmami</figcaption></figure>
+<figure><img src="yoga.png" alt="Regeneracja i oddech"><figcaption>Regeneracja, rozluźnianie i oddech</figcaption></figure>
+</div>
+</section>
+
+<section id="kontakt" class="alt">
+<h2>Zapisz kontakt</h2>
+<p style="color:var(--muted);max-width:60ch">
+Zeskanuj kod QR, aby zapisać moje dane kontaktowe.
+</p>
+<div class="qr-image">
+<img src="qr-ewelina-czachor.png" alt="Kod QR – Ewelina Czachor">
+</div>
+</section>
+
+</main>
+
+<footer>
+© 2025 Ewelina Czachor
+</footer>
+
+</body>
+</html>
