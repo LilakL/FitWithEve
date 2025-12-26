@@ -154,7 +154,7 @@ section.alt{
 .reveal{opacity:0;transform:translateY(24px);transition:1s}
 .reveal.active{opacity:1;transform:none}
 
-/* ================== QR DESKTOP ================== */
+/* ================== QR ================== */
 .qr-wrapper{
     margin-top:30px;
     display:flex;gap:26px;align-items:center;
@@ -170,33 +170,10 @@ section.alt{
 }
 .qr-details strong{color:var(--primary);font-size:1rem}
 
-/* ================== MOBILE QR SCREEN ================== */
-.qr-mobile{
-    display:none;
-    position:fixed;inset:0;z-index:2000;
-    background:radial-gradient(circle at top,rgba(32,191,107,.25),#fff);
-    padding:40px 20px;
-    text-align:center;
-}
-.qr-mobile img{
-    width:220px;margin:30px auto;
-    border-radius:22px;
-    box-shadow:var(--shadow-hover);
-}
-.qr-mobile button{margin-top:20px}
-
-/* ================== FOOTER ================== */
-footer{
-    background:var(--primary);color:#cde5ff;
-    text-align:center;padding:18px;font-size:.8rem;
-}
-
 /* ================== MOBILE ================== */
 @media(max-width:768px){
     .hero{grid-template-columns:1fr}
     section.alt{padding:40px 20px}
-    .qr-desktop{display:none}
-    .qr-mobile{display:block}
 }
 </style>
 </head>
@@ -205,9 +182,13 @@ footer{
 
 <nav class="navbar">
 <div class="nav-inner">
-<div><strong>Ewelina Czachor</strong><br><small>Fizjoterapia • Trening • Wellness</small></div>
+<div>
+<strong>Ewelina Czachor</strong><br>
+<small>Fizjoterapia • Trening • Wellness</small>
+</div>
 <div class="nav-links">
 <a href="#oferta">Oferta</a>
+<a href="arbonne.html">Arbonne</a>
 <a href="#opinie">Opinie</a>
 <a href="#kontakt" class="nav-cta">Kontakt</a>
 </div>
@@ -227,7 +208,7 @@ footer{
 </div>
 </div>
 <div class="hero-card">
-<img src="portret-ewelina.jpg" alt="">
+<img src="portret-ewelina.jpg" alt="Ewelina Czachor">
 <h3>Twoje ciało. Twój plan.</h3>
 <p>Indywidualne podejście i długofalowe efekty.</p>
 </div>
@@ -237,9 +218,25 @@ footer{
 <section id="oferta" class="alt reveal">
 <h2>Oferta</h2>
 <div class="cards-grid">
-<div class="card"><h3>Fizjoterapia</h3><p>Redukcja bólu i poprawa funkcji.</p></div>
-<div class="card"><h3>Trening personalny</h3><p>Bezpieczny trening funkcjonalny.</p></div>
-<div class="card"><h3>Wellness</h3><p>Holistyczne wsparcie stylu życia.</p></div>
+<div class="card">
+<h3>Fizjoterapia</h3>
+<p>Redukcja bólu i poprawa funkcji.</p>
+</div>
+<div class="card">
+<h3>Trening personalny</h3>
+<p>Bezpieczny trening funkcjonalny.</p>
+</div>
+<div class="card">
+<h3>Wellness</h3>
+<p>
+Holistyczne wsparcie stylu życia i regeneracji z wykorzystaniem produktów klasy premium.
+</p>
+<p style="margin-top:10px">
+<a href="arbonne.html" style="color:var(--accent);font-weight:600">
+Dowiedz się więcej o Arbonne →
+</a>
+</p>
+</div>
 </div>
 </section>
 
@@ -247,7 +244,10 @@ footer{
 <section class="reveal">
 <h2>Galeria</h2>
 <div class="gallery">
-<img src="band.png"><img src="bars.png"><img src="stretching.png"><img src="yoga.png">
+<img src="band.png" alt="">
+<img src="bars.png" alt="">
+<img src="stretching.png" alt="">
+<img src="yoga.png" alt="">
 </div>
 </section>
 
@@ -255,9 +255,18 @@ footer{
 <section id="opinie" class="alt reveal">
 <h2>Opinie klientów</h2>
 <div class="reviews-grid">
-<div class="review-card"><p>„Ogromna poprawa – profesjonalizm i empatia.”</p><div class="review-author">Anna K.</div></div>
-<div class="review-card"><p>„Najlepsze podejście do rehabilitacji.”</p><div class="review-author">Michał P.</div></div>
-<div class="review-card"><p>„Spokojnie, holistycznie i skutecznie.”</p><div class="review-author">Karolina S.</div></div>
+<div class="review-card">
+<p>„Ogromna poprawa – profesjonalizm i empatia.”</p>
+<div class="review-author">Anna K.</div>
+</div>
+<div class="review-card">
+<p>„Najlepsze podejście do rehabilitacji.”</p>
+<div class="review-author">Michał P.</div>
+</div>
+<div class="review-card">
+<p>„Spokojnie, holistycznie i skutecznie.”</p>
+<div class="review-author">Karolina S.</div>
+</div>
 </div>
 </section>
 
@@ -279,37 +288,30 @@ footer{
 </div>
 </section>
 
-<!-- QR DESKTOP -->
-<section class="alt reveal qr-desktop">
+<!-- QR -->
+<section class="alt reveal">
 <h2>Zapisz kontakt</h2>
 <div class="qr-wrapper">
-<img src="qr-ewelina-czachor.png" alt="QR">
+<img src="qr-ewelina-czachor.png" alt="Kod QR">
 <div class="qr-details">
 <strong>Ewelina Czachor</strong>
 <span>Fizjoterapia • Trening • Wellness</span>
 <span>📞 723 981 333</span>
-<span✉️ LilakL@yahoo.pl</span>
+<span>✉️ LilakL@yahoo.pl</span>
 </div>
 </div>
 </section>
 
 </main>
 
-<footer>© 2025 Ewelina Czachor</footer>
+<footer>
+© 2025 Ewelina Czachor
+</footer>
 
-<!-- MOBILE QR SCREEN -->
-<div class="qr-mobile">
-<h2>Zapisz mój kontakt</h2>
-<p>Zeskanuj kod QR i zapisz dane w telefonie</p>
-<img src="qr-ewelina-czachor.png" alt="QR mobile">
-<a href="#kontakt" class="btn-primary">Napisz do mnie</a>
-</div>
-
-<!-- LIGHTBOX -->
 <div id="lightbox"><img></div>
 
 <script>
-// Reveal
+// Reveal on scroll
 const reveals=document.querySelectorAll('.reveal');
 const obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('active')),{threshold:.15});
 reveals.forEach(r=>obs.observe(r));

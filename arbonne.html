@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Arbonne – Wellness klasy premium | Ewelina Czachor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ================== VARIABLES ================== */
+:root {
+    --primary:#0a3d62;
+    --accent:#20bf6b;
+    --bg:#f5f7f8;
+    --muted:#6c7a89;
+    --white:#ffffff;
+    --shadow-soft:0 10px 25px rgba(0,0,0,.08);
+    --shadow-hover:0 20px 45px rgba(0,0,0,.14);
+    --radius:20px;
+}
+
+/* ================== BASE ================== */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+    margin:0;
+    font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+    background:var(--bg);
+    color:#222;
+    line-height:1.8;
+}
+h1,h2,h3{
+    font-family:"Playfair Display",serif;
+    color:var(--primary);
+    letter-spacing:.02em;
+}
+p{max-width:65ch}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+/* ================== NAV ================== */
+.navbar{
+    position:sticky;top:0;z-index:999;
+    background:rgba(10,61,98,.94);
+    backdrop-filter:blur(12px);
+    box-shadow:0 4px 18px rgba(0,0,0,.18);
+}
+.nav-inner{
+    max-width:1100px;margin:auto;
+    padding:14px 18px;
+    display:flex;justify-content:space-between;align-items:center;
+    color:#fff;
+}
+.nav-links{display:flex;gap:18px;font-size:.9rem}
+.nav-links a{padding:6px 14px;border-radius:999px}
+.nav-links a:hover{background:rgba(255,255,255,.12)}
+.nav-cta{background:var(--accent);font-weight:600}
+
+/* ================== LAYOUT ================== */
+main{max-width:1100px;margin:auto;padding:40px 18px 80px}
+section{margin-top:80px}
+section.alt{
+    background:linear-gradient(180deg,transparent,rgba(10,61,98,.035),transparent);
+    padding:50px 30px;border-radius:32px;
+}
+
+/* ================== HERO ================== */
+.hero{
+    position:relative;
+    padding:80px 30px;
+    border-radius:36px;
+    background:
+        radial-gradient(circle at top, rgba(32,191,107,.25), transparent),
+        #ffffff;
+    box-shadow:var(--shadow-soft);
+}
+.hero p{color:var(--muted)}
+
+/* ================== GRID ================== */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:26px;
+}
+
+/* ================== CARD ================== */
+.card{
+    background:#fff;
+    padding:26px;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow-soft);
+    transition:.3s ease;
+}
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow-hover);
+}
+
+/* ================== CTA ================== */
+.cta{
+    text-align:center;
+    padding:60px 30px;
+    background:
+        radial-gradient(circle at top,rgba(32,191,107,.22),transparent);
+    border-radius:36px;
+}
+
+/* ================== BUTTONS ================== */
+.btn-primary{
+    background:var(--accent);
+    color:#fff;
+    padding:13px 30px;
+    border-radius:999px;
+    border:none;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:var(--shadow-soft);
+    transition:.25s;
+}
+.btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:var(--shadow-hover);
+}
+
+/* ================== FOOTER ================== */
+footer{
+    background:var(--primary);
+    color:#cde5ff;
+    text-align:center;
+    padding:18px;
+    font-size:.8rem;
+}
+
+/* ================== MOBILE ================== */
+@media(max-width:768px){
+    section.alt{padding:40px 20px}
+    .hero{padding:60px 24px}
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+<div class="nav-inner">
+<div>
+<strong>Ewelina Czachor</strong><br>
+<small>Fizjoterapia • Trening • Wellness</small>
+</div>
+<div class="nav-links">
+<a href="index.html">Strona główna</a>
+<a href="index.html#kontakt" class="nav-cta">Kontakt</a>
+</div>
+</div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+<h1>Arbonne – holistyczne wellness klasy premium</h1>
+<p>
+Arbonne to globalna marka wellness oparta na filozofii czystych składników,
+świadomej pielęgnacji i wspierania organizmu w sposób zgodny z naturą.
+Produkty Arbonne stanowią doskonałe uzupełnienie pracy z ciałem, regeneracji
+oraz zdrowego stylu życia.
+</p>
+</section>
+
+<!-- DLACZEGO ARBONNE -->
+<section class="alt">
+<h2>Dlaczego Arbonne?</h2>
+<div class="grid">
+<div class="card">
+<h3>🌿 Czyste formuły</h3>
+<p>
+Produkty Arbonne tworzone są bez zbędnych substancji obciążających organizm.
+Marka stawia na jakość, transparentność i odpowiedzialne podejście do składu.
+</p>
+</div>
+<div class="card">
+<h3>✨ Jakość klasy premium</h3>
+<p>
+To rozwiązania dla osób, które oczekują wysokiej skuteczności, bezpieczeństwa
+i spójności z filozofią wellness.
+</p>
+</div>
+<div class="card">
+<h3>⚖️ Holistyczne wsparcie</h3>
+<p>
+Arbonne łączy pielęgnację, suplementację i codzienne rytuały, wspierając
+równowagę pomiędzy ruchem, regeneracją i stylem życia.
+</p>
+</div>
+</div>
+</section>
+
+<!-- ROLA EWELINY -->
+<section>
+<h2>Ewelina Czachor – Konsultantka Arbonne</h2>
+<p>
+Jako fizjoterapeutka i trener personalny pracuję z ciałem w sposób świadomy
+i długofalowy. Rola Konsultantki Arbonne pozwala mi uzupełniać tę pracę
+o wysokiej jakości produkty wellness, które wspierają regenerację,
+pielęgnację i zdrowe nawyki poza salą treningową.
+</p>
+<p>
+Nie jest to sprzedaż „z półki”, lecz indywidualne rekomendacje dopasowane
+do stylu życia, potrzeb i celów danej osoby.
+</p>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+<h2>Chcesz dowiedzieć się więcej?</h2>
+<p>
+Jeżeli interesuje Cię świadome wellness, produkty Arbonne lub chcesz sprawdzić,
+jak mogą uzupełnić Twoją pracę z ciałem — skontaktuj się ze mną.
+</p>
+<a href="index.html#kontakt" class="btn-primary">Skontaktuj się</a>
+</section>
+
+</main>
+
+<footer>
+© 2025 Ewelina Czachor • Konsultantka Arbonne
+</footer>
+
+</body>
+</html>
