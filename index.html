@@ -154,21 +154,17 @@ section.alt{
 .reveal{opacity:0;transform:translateY(24px);transition:1s}
 .reveal.active{opacity:1;transform:none}
 
-/* ================== QR ================== */
+/* ================== QR ONLY ================== */
 .qr-wrapper{
-    margin-top:30px;
-    display:flex;gap:26px;align-items:center;
-    max-width:520px;
+    display:flex;
+    justify-content:center;
+    padding:34px;
 }
 .qr-wrapper img{
-    width:160px;border-radius:18px;
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    width:200px;
+    border-radius:22px;
+    box-shadow:0 15px 35px rgba(0,0,0,.18);
 }
-.qr-details{
-    display:flex;flex-direction:column;gap:6px;
-    font-size:.9rem;color:var(--muted);
-}
-.qr-details strong{color:var(--primary);font-size:1rem}
 
 /* ================== MOBILE ================== */
 @media(max-width:768px){
@@ -291,14 +287,11 @@ Dowiedz się więcej o Arbonne →
 <!-- QR -->
 <section class="alt reveal">
 <h2>Zapisz kontakt</h2>
+<p style="color:var(--muted);max-width:60ch">
+Zeskanuj kod QR, aby zapisać moje dane kontaktowe bezpośrednio w telefonie.
+</p>
 <div class="qr-wrapper">
-<img src="qr-ewelina-czachor.png" alt="Kod QR">
-<div class="qr-details">
-<strong>Ewelina Czachor</strong>
-<span>Fizjoterapia • Trening • Wellness</span>
-<span>📞 723 981 333</span>
-<span>✉️ LilakL@yahoo.pl</span>
-</div>
+<img src="qr-ewelina-czachor.png" alt="Kod QR – dane kontaktowe">
 </div>
 </section>
 
