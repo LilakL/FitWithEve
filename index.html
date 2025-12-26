@@ -36,24 +36,57 @@ img{max-width:100%;display:block}
 
 /* ================= NAVBAR ================= */
 .navbar{
-    position:sticky;top:0;z-index:999;
+    position:sticky;
+    top:0;
+    z-index:999;
     background:rgba(10,61,98,.94);
     backdrop-filter:blur(12px);
     box-shadow:0 4px 18px rgba(0,0,0,.18);
 }
 .nav-inner{
-    max-width:1100px;margin:auto;
+    max-width:1100px;
+    margin:auto;
     padding:14px 18px;
-    display:flex;justify-content:space-between;align-items:center;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
     color:#fff;
 }
-.nav-links{display:flex;gap:18px;font-size:.9rem}
-.nav-links a{padding:6px 14px;border-radius:999px}
-.nav-links a:hover{background:rgba(255,255,255,.12)}
-.nav-cta{background:var(--accent);font-weight:600}
+
+.brand{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    line-height:1.2;
+}
+.brand-logo{
+    max-width:140px;
+    margin:6px 0 4px;
+}
+
+.nav-links{
+    display:flex;
+    gap:18px;
+    font-size:.9rem;
+}
+.nav-links a{
+    padding:6px 14px;
+    border-radius:999px;
+}
+.nav-links a:hover{
+    background:rgba(255,255,255,.12);
+}
+.nav-cta{
+    background:var(--accent);
+    font-weight:600;
+}
 
 /* ================= LAYOUT ================= */
-main{max-width:1100px;margin:auto;padding:30px 18px 80px}
+main{
+    max-width:1100px;
+    margin:auto;
+    padding:30px 18px 80px;
+}
 section{margin-top:80px}
 section.alt{
     background:linear-gradient(180deg,transparent,rgba(10,61,98,.035),transparent);
@@ -69,7 +102,12 @@ section.alt{
     align-items:center;
 }
 .hero p{color:var(--muted)}
-.hero-actions{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
+.hero-actions{
+    margin-top:26px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
 
 /* ================= BUTTONS ================= */
 .btn-primary{
@@ -184,6 +222,7 @@ section.alt{
     .gallery-grid{grid-template-columns:1fr}
     section.alt{padding:40px 20px}
     .form-grid{grid-template-columns:1fr}
+    .brand-logo{max-width:120px}
 }
 </style>
 </head>
@@ -191,109 +230,112 @@ section.alt{
 <body>
 
 <nav class="navbar">
-<div class="nav-inner">
-<div>
-<strong>Ewelina Czachor</strong><br>
-<small>Fizjoterapia • Trening • Wellness</small>
-</div>
-<div class="nav-links">
-<a href="#oferta">Oferta</a>
-<a href="arbonne.html">Arbonne</a>
-<a href="#galeria">Galeria</a>
-<a href="#kontakt" class="nav-cta">Kontakt</a>
-</div>
-</div>
+    <div class="nav-inner">
+        <div class="brand">
+            <strong>Ewelina Czachor</strong>
+            <img src="FitwithEveline.png" alt="Fit with Eveline – logo" class="brand-logo">
+            <small>Fizjoterapia • Trening • Wellness</small>
+        </div>
+
+        <div class="nav-links">
+            <a href="#oferta">Oferta</a>
+            <a href="arbonne.html">Arbonne</a>
+            <a href="#galeria">Galeria</a>
+            <a href="#kontakt" class="nav-cta">Kontakt</a>
+        </div>
+    </div>
 </nav>
 
 <main>
 
 <section class="hero">
-<div>
-<h1>Holistyczna fizjoterapia i trening</h1>
-<p>Świadoma praca z ciałem, redukcja bólu, poprawa sprawności i regeneracja.</p>
-<div class="hero-actions">
-<a href="#kontakt" class="btn-primary">Umów konsultację</a>
-<a href="#oferta" class="btn-ghost">Poznaj ofertę</a>
-</div>
-</div>
-<div class="hero-card">
-<img src="portret-ewelina.jpg" alt="Ewelina Czachor – fizjoterapeutka">
-<h3>Twoje ciało. Twój plan.</h3>
-<p>Indywidualne podejście i długofalowe efekty.</p>
-</div>
-</section>
+    <div>
+        <h1>Holistyczna fizjoterapia i trening</h1>
+        <p>Świadoma praca z ciałem, redukcja bólu, poprawa sprawności i regeneracja.</p>
+        <div class="hero-actions">
+            <a href="#kontakt" class="btn-primary">Umów konsultację</a>
+            <a href="#oferta" class="btn-ghost">Poznaj ofertę</a>
+        </div>
+    </div>
 
-<section id="oferta" class="alt">
-<h2>Oferta</h2>
-<div class="cards-grid">
-<div class="card"><h3>Fizjoterapia</h3><p>Redukcja bólu, terapia manualna, powrót do sprawności.</p></div>
-<div class="card"><h3>Trening personalny</h3><p>Bezpieczny trening funkcjonalny dopasowany do Ciebie.</p></div>
-<div class="card"><h3>Wellness i Dietetyka</h3><p>Regeneracja i wsparcie stylu życia.</p></div>
-</div>
-</section>
-
-<section id="galeria">
-<h2>Galeria</h2>
-<p style="color:var(--muted);max-width:60ch">
-Ruch, regeneracja i świadoma praca z ciałem.
-</p>
-
-<div class="gallery-grid">
-<div class="gallery-item"><img src="band.png"><div class="gallery-caption">Trening z gumami oporowymi</div></div>
-<div class="gallery-item"><img src="bars.png"><div class="gallery-caption">Trening siłowy i stabilizacja</div></div>
-<div class="gallery-item"><img src="step.png"><div class="gallery-caption">Zajęcia grupowe fitness</div></div>
-<div class="gallery-item"><img src="stretching.png"><div class="gallery-caption">Wzmacnianie z hantlami</div></div>
-<div class="gallery-item"><img src="stripes.png"><div class="gallery-caption">Ćwiczenia korekcyjne</div></div>
-<div class="gallery-item"><img src="yoga.png"><div class="gallery-caption">Mobilność i regeneracja</div></div>
-</div>
-</section>
-
-<section id="kontakt" class="alt">
-<h2>Skontaktuj się ze mną</h2>
-
-<p>
-<a href="qr-ewelina-czachor.png" style="color:var(--primary);font-weight:600">
-Pobierz wizytówkę vCard
-</a>
-</p>
-
-
-<section id="kontakt" class="alt">
-    <h2>Zapisz kontakt</h2>
-    <p style="color:var(--muted);max-width:60ch">
-        Zeskanuj kod QR, aby zapisać moje dane kontaktowe.
-    </p>
-
-    <div class="qr-image">
-        <img src="qr-ewelina-czachor.png"
-             alt="Kod QR – Ewelina Czachor"
-             width="20%">
+    <div class="hero-card">
+        <img src="portret-ewelina.jpg" alt="Ewelina Czachor – fizjoterapeutka">
+        <h3>Twoje ciało. Twój plan.</h3>
+        <p>Indywidualne podejście i długofalowe efekty.</p>
     </div>
 </section>
 
-<div class="contact-wrapper">
-<form class="contact-form" action="https://formspree.io/f/xbdjlzpe" method="POST">
+<section id="oferta" class="alt">
+    <h2>Oferta</h2>
+    <div class="cards-grid">
+        <div class="card"><h3>Fizjoterapia</h3><p>Redukcja bólu, terapia manualna, powrót do sprawności.</p></div>
+        <div class="card"><h3>Trening personalny</h3><p>Bezpieczny trening funkcjonalny dopasowany do Ciebie.</p></div>
+        <div class="card"><h3>Wellness i Dietetyka</h3><p>Regeneracja i wsparcie stylu życia.</p></div>
+    </div>
+</section>
 
-<div class="form-grid">
-<div><label>Imię</label><input type="text" name="name" required></div>
-<div><label>E-mail</label><input type="email" name="email" required></div>
-</div>
+<section id="galeria">
+    <h2>Galeria</h2>
+    <p style="color:var(--muted);max-width:60ch">
+        Ruch, regeneracja i świadoma praca z ciałem.
+    </p>
 
-<div>
-<label>Wiadomość</label>
-<textarea name="message" required></textarea>
-</div>
+    <div class="gallery-grid">
+        <div class="gallery-item"><img src="band.png"><div class="gallery-caption">Trening z gumami oporowymi</div></div>
+        <div class="gallery-item"><img src="bars.png"><div class="gallery-caption">Trening siłowy i stabilizacja</div></div>
+        <div class="gallery-item"><img src="step.png"><div class="gallery-caption">Zajęcia grupowe fitness</div></div>
+        <div class="gallery-item"><img src="stretching.png"><div class="gallery-caption">Wzmacnianie z hantlami</div></div>
+        <div class="gallery-item"><img src="stripes.png"><div class="gallery-caption">Ćwiczenia korekcyjne</div></div>
+        <div class="gallery-item"><img src="yoga.png"><div class="gallery-caption">Mobilność i regeneracja</div></div>
+    </div>
+</section>
 
-<button type="submit" class="btn-primary">Wyślij wiadomość</button>
-<p class="contact-note">Twoje dane są wykorzystywane wyłącznie w celu kontaktu.</p>
+<section id="kontakt" class="alt">
+    <h2>Skontaktuj się ze mną</h2>
 
-</form>
-</div>
+    <p>
+        <a href="qr-ewelina-czachor.png" style="color:var(--primary);font-weight:600">
+            Pobierz wizytówkę vCard
+        </a>
+    </p>
+
+    <p style="color:var(--muted)">
+        Zeskanuj kod QR, aby zapisać moje dane kontaktowe.
+    </p>
+
+    <img src="qr-ewelina-czachor.png" alt="Kod QR – Ewelina Czachor" style="max-width:200px">
+
+    <div class="contact-wrapper">
+        <form class="contact-form" action="https://formspree.io/f/xbdjlzpe" method="POST">
+
+            <div class="form-grid">
+                <div>
+                    <label>Imię</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div>
+                    <label>E-mail</label>
+                    <input type="email" name="email" required>
+                </div>
+            </div>
+
+            <div>
+                <label>Wiadomość</label>
+                <textarea name="message" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary">Wyślij wiadomość</button>
+            <p class="contact-note">Twoje dane są wykorzystywane wyłącznie w celu kontaktu.</p>
+
+        </form>
+    </div>
 </section>
 
 </main>
 
-<footer>© 2025 Ewelina Czachor</footer>
+<footer style="text-align:center;padding:30px;color:var(--muted)">
+    © 2025 Ewelina Czachor
+</footer>
 
 </body>
 </html>
