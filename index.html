@@ -257,6 +257,40 @@ Zeskanuj kod QR, aby zapisać moje dane kontaktowe.
 </div>
 </section>
 
+<section id="kontakt" class="alt">
+<h2>Skontaktuj się ze mną</h2>
+<p style="color:var(--muted);max-width:60ch">
+Masz pytania dotyczące fizjoterapii, treningu lub wellness?  
+Wypełnij formularz — odezwę się do Ciebie.
+</p>
+
+<form class="contact-form"
+      action="https://formspree.io/f/xbdjlzpe"
+      method="POST">
+
+<label for="name">Imię</label>
+<input type="text" id="name" name="name" placeholder="Twoje imię" required>
+
+<label for="email">Email</label>
+<input type="email" id="email" name="email" placeholder="Twój adres email" required>
+
+<label for="message">Wiadomość</label>
+<textarea id="message" name="message" placeholder="Napisz, w czym mogę pomóc" required></textarea>
+
+<!-- RODO -->
+<input type="hidden" name="consent" value="Wyrażam zgodę na kontakt mailowy">
+
+<button type="submit" class="btn-primary">Wyślij wiadomość</button>
+
+<p class="contact-note">
+Twoje dane są wykorzystywane wyłącznie do kontaktu.
+</p>
+
+</form>
+</section>
+
+
+
 </main>
 
 <footer>
