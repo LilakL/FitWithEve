@@ -9,19 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
-/* ================== VARIABLES ================== */
 :root {
     --primary:#0a3d62;
     --accent:#20bf6b;
     --bg:#f5f7f8;
     --muted:#6c7a89;
-    --white:#ffffff;
     --shadow-soft:0 10px 25px rgba(0,0,0,.08);
     --shadow-hover:0 20px 45px rgba(0,0,0,.14);
     --radius:20px;
 }
 
-/* ================== BASE ================== */
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
@@ -35,11 +32,9 @@ h1,h2,h3{
     font-family:"Playfair Display",serif;
     color:var(--primary);
 }
-p{max-width:65ch}
 a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
 
-/* ================== NAV ================== */
 .navbar{
     position:sticky;top:0;z-index:999;
     background:rgba(10,61,98,.94);
@@ -57,16 +52,13 @@ img{max-width:100%;display:block}
 .nav-links a:hover{background:rgba(255,255,255,.12)}
 .nav-cta{background:var(--accent);font-weight:600}
 
-/* ================== LAYOUT ================== */
 main{max-width:1100px;margin:auto;padding:30px 18px 80px}
 section{margin-top:80px}
 section.alt{
     background:linear-gradient(180deg,transparent,rgba(10,61,98,.035),transparent);
-    padding:50px 30px;
-    border-radius:32px;
+    padding:50px 30px;border-radius:32px;
 }
 
-/* ================== HERO ================== */
 .hero{
     display:grid;
     grid-template-columns:3fr 2.5fr;
@@ -84,7 +76,6 @@ section.alt{
 .hero p{color:var(--muted)}
 .hero-actions{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
 
-/* ================== BUTTONS ================== */
 .btn-primary{
     background:var(--accent);
     color:#fff;
@@ -107,7 +98,6 @@ section.alt{
     border-radius:999px;
 }
 
-/* ================== CARDS ================== */
 .card,.hero-card,.review-card,.contact-form{
     background:#fff;
     border-radius:var(--radius);
@@ -125,13 +115,11 @@ section.alt{
     gap:26px;
 }
 
-/* ================== HERO CARD ================== */
 .hero-card img{
     border-radius:18px;
     margin-bottom:16px;
 }
 
-/* ================== GALLERY ================== */
 .gallery{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
@@ -141,37 +129,8 @@ section.alt{
     height:170px;
     object-fit:cover;
     border-radius:18px;
-    cursor:pointer;
-    transition:.4s;
-}
-.gallery img:hover{transform:scale(1.06)}
-
-/* ================== LIGHTBOX ================== */
-#lightbox{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.85);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:1000;
-}
-#lightbox img{
-    max-width:90%;
-    max-height:90%;
-    border-radius:20px;
 }
 
-/* ================== CONTACT ================== */
-.contact-form input,.contact-form textarea{
-    width:100%;
-    padding:12px;
-    border-radius:12px;
-    border:1px solid rgba(0,0,0,.15);
-}
-.contact-form textarea{min-height:120px}
-
-/* ================== QR SECTION ================== */
 .qr-image{
     display:flex;
     justify-content:center;
@@ -183,7 +142,6 @@ section.alt{
     box-shadow:0 15px 35px rgba(0,0,0,.18);
 }
 
-/* ================== FOOTER ================== */
 footer{
     background:var(--primary);
     color:#cde5ff;
@@ -192,7 +150,6 @@ footer{
     font-size:.8rem;
 }
 
-/* ================== MOBILE ================== */
 @media(max-width:768px){
     .hero{grid-template-columns:1fr}
     section.alt{padding:40px 20px}
@@ -211,7 +168,6 @@ footer{
 <div class="nav-links">
 <a href="#oferta">Oferta</a>
 <a href="arbonne.html">Arbonne</a>
-<a href="#opinie">Opinie</a>
 <a href="#kontakt" class="nav-cta">Kontakt</a>
 </div>
 </div>
@@ -243,18 +199,22 @@ footer{
 <div class="card">
 <h3>Wellness</h3>
 <p>Holistyczne wsparcie stylu życia i regeneracji.</p>
-<a href="arbonne.html" style="color:var(--accent);font-weight:600">Dowiedz się więcej o Arbonne →</a>
+<a href="arbonne.html" style="color:var(--accent);font-weight:600">
+Dowiedz się więcej o Arbonne →
+</a>
 </div>
 </div>
 </section>
 
+<!-- QR vCard -->
 <section class="alt">
 <h2>Zapisz kontakt</h2>
 <p style="color:var(--muted);max-width:60ch">
-Zeskanuj kod QR, aby zapisać moje dane kontaktowe bezpośrednio w telefonie.
+Zeskanuj kod QR, aby automatycznie zapisać moje dane kontaktowe w telefonie.
 </p>
 <div class="qr-image">
-<img src="qr-ewelina-czachor.png" alt="Kod QR – dane kontaktowe">
+<img src="qr-ewelina-czachor.png"
+     alt="Kod QR vCard – Ewelina Czachor">
 </div>
 </section>
 
@@ -263,18 +223,6 @@ Zeskanuj kod QR, aby zapisać moje dane kontaktowe bezpośrednio w telefonie.
 <footer>
 © 2025 Ewelina Czachor
 </footer>
-
-<div id="lightbox"><img></div>
-
-<script>
-// Lightbox
-const lb=document.getElementById('lightbox');
-const lbImg=lb.querySelector('img');
-document.querySelectorAll('.gallery img').forEach(i=>{
-  i.onclick=()=>{lbImg.src=i.src;lb.style.display='flex'}
-});
-lb.onclick=()=>lb.style.display='none';
-</script>
 
 </body>
 </html>
