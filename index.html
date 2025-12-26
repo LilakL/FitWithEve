@@ -269,21 +269,38 @@ Wypełnij formularz — odezwę się do Ciebie.
       method="POST">
 
 <label for="name">Imię</label>
-<input type="text" id="name" name="name" placeholder="Twoje imię" required>
+<input type="text"
+       id="name"
+       name="name"
+       placeholder="Jak masz na imię?"
+       required>
 
-<label for="email">Email</label>
-<input type="email" id="email" name="email" placeholder="Twój adres email" required>
+<label for="email">Adres e-mail</label>
+<input type="email"
+       id="email"
+       name="email"
+       placeholder="Twój adres e-mail"
+       required>
 
 <label for="message">Wiadomość</label>
-<textarea id="message" name="message" placeholder="Napisz, w czym mogę pomóc" required></textarea>
+<textarea id="message"
+          name="message"
+          placeholder="Opisz swoją sytuację, pytanie lub potrzeby (min. 300 znaków)"
+          minlength="300"
+          required></textarea>
 
-<!-- RODO -->
-<input type="hidden" name="consent" value="Wyrażam zgodę na kontakt mailowy">
+<div class="char-info">
+Minimum 300 znaków
+</div>
 
-<button type="submit" class="btn-primary">Wyślij wiadomość</button>
+<input type="hidden" name="consent" value="Zgoda na kontakt mailowy">
+
+<button type="submit" class="btn-primary">
+Wyślij wiadomość
+</button>
 
 <p class="contact-note">
-Twoje dane są wykorzystywane wyłącznie do kontaktu.
+Twoje dane są wykorzystywane wyłącznie w celu kontaktu.
 </p>
 
 </form>
