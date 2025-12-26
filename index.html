@@ -21,285 +21,182 @@
     --radius:20px;
 }
 
-/* ================== RESET / BASE ================== */
-* { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-
-body {
+/* ================== BASE ================== */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
     margin:0;
     font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
     background:var(--bg);
     color:#222;
     line-height:1.8;
 }
-
-h1,h2,h3 {
+h1,h2,h3{
     font-family:"Playfair Display",serif;
     color:var(--primary);
     letter-spacing:.02em;
-    margin-top:0;
 }
-
-h1 { font-size:clamp(2.2rem,3vw,2.8rem); }
-h2 { font-size:1.8rem; margin-bottom:12px; }
-h3 { font-size:1.1rem; }
-
-p { max-width:65ch; }
-
-a { text-decoration:none; color:inherit; }
-img { max-width:100%; display:block; }
+p{max-width:65ch}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
 
 /* ================== NAV ================== */
-.navbar {
-    position:sticky;
-    top:0;
-    z-index:999;
+.navbar{
+    position:sticky;top:0;z-index:999;
     background:rgba(10,61,98,.94);
     backdrop-filter:blur(12px);
     box-shadow:0 4px 18px rgba(0,0,0,.18);
 }
-
-.nav-inner {
-    max-width:1100px;
-    margin:auto;
+.nav-inner{
+    max-width:1100px;margin:auto;
     padding:14px 18px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+    display:flex;justify-content:space-between;align-items:center;
     color:#fff;
 }
-
-.nav-links {
-    display:flex;
-    gap:18px;
-    font-size:.9rem;
-}
-
-.nav-links a {
-    padding:6px 14px;
-    border-radius:999px;
-    transition:background .2s;
-}
-
-.nav-links a:hover {
-    background:rgba(255,255,255,.12);
-}
-
-.nav-cta {
-    background:var(--accent);
-    font-weight:600;
-}
+.nav-links{display:flex;gap:18px;font-size:.9rem}
+.nav-links a{padding:6px 14px;border-radius:999px}
+.nav-links a:hover{background:rgba(255,255,255,.12)}
+.nav-cta{background:var(--accent);font-weight:600}
 
 /* ================== LAYOUT ================== */
-main {
-    max-width:1100px;
-    margin:auto;
-    padding:30px 18px 70px;
-}
-
-section { margin-top:80px; }
-
-section.alt {
-    background:linear-gradient(
-        180deg,
-        transparent,
-        rgba(10,61,98,.035),
-        transparent
-    );
-    padding:50px 30px;
-    border-radius:32px;
+main{max-width:1100px;margin:auto;padding:30px 18px 80px}
+section{margin-top:80px}
+section.alt{
+    background:linear-gradient(180deg,transparent,rgba(10,61,98,.035),transparent);
+    padding:50px 30px;border-radius:32px;
 }
 
 /* ================== HERO ================== */
-.hero {
-    display:grid;
-    grid-template-columns:3fr 2.5fr;
-    gap:40px;
-    align-items:center;
-    position:relative;
+.hero{
+    display:grid;grid-template-columns:3fr 2.5fr;
+    gap:40px;align-items:center;position:relative;
 }
-
-.hero::before {
-    content:"";
-    position:absolute;
-    inset:-40px;
-    background:
-        radial-gradient(circle at 20% 20%,rgba(32,191,107,.18),transparent 55%);
+.hero::before{
+    content:"";position:absolute;inset:-40px;
+    background:radial-gradient(circle at 20% 20%,rgba(32,191,107,.18),transparent 55%);
     z-index:-1;
 }
-
-.hero p {
-    color:var(--muted);
-    font-size:1rem;
-}
-
-.hero-actions {
-    margin-top:26px;
-    display:flex;
-    gap:14px;
-    flex-wrap:wrap;
-}
+.hero p{color:var(--muted)}
+.hero-actions{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
 
 /* ================== BUTTONS ================== */
-.btn-primary {
-    background:var(--accent);
-    color:#fff;
-    padding:13px 28px;
-    border-radius:999px;
-    border:none;
-    font-weight:600;
-    cursor:pointer;
+.btn-primary{
+    background:var(--accent);color:#fff;
+    padding:13px 28px;border-radius:999px;
+    border:none;font-weight:600;cursor:pointer;
     box-shadow:var(--shadow-soft);
-    transition:.25s ease;
+    transition:.25s;
 }
-
-.btn-primary:hover {
-    transform:translateY(-2px);
-    box-shadow:var(--shadow-hover);
-}
-
-.btn-ghost {
-    background:transparent;
-    border:1px solid rgba(10,61,98,.3);
-    padding:11px 24px;
-    border-radius:999px;
+.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+.btn-ghost{
+    background:transparent;border:1px solid rgba(10,61,98,.3);
+    padding:11px 24px;border-radius:999px;
 }
 
 /* ================== CARDS ================== */
-.card,
-.hero-card,
-.review-card,
-.contact-form {
-    background:#fff;
-    border-radius:var(--radius);
-    box-shadow:var(--shadow-soft);
-    padding:26px;
-    transition:.3s ease;
+.card,.hero-card,.review-card,.contact-form,.qr-wrapper{
+    background:#fff;border-radius:var(--radius);
+    box-shadow:var(--shadow-soft);padding:26px;
+    transition:.3s;
 }
-
-.card:hover,
-.review-card:hover {
-    transform:translateY(-6px);
-    box-shadow:var(--shadow-hover);
-}
-
-.cards-grid,
-.reviews-grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+.card:hover,.review-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover)}
+.cards-grid,.reviews-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:26px;
 }
 
 /* ================== HERO CARD ================== */
-.hero-card img {
-    border-radius:18px;
-    margin-bottom:16px;
-}
+.hero-card img{border-radius:18px;margin-bottom:16px}
 
 /* ================== GALLERY ================== */
-.gallery {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+.gallery{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
     gap:16px;
 }
-
-.gallery img {
-    height:170px;
-    object-fit:cover;
-    border-radius:18px;
-    cursor:pointer;
-    transition:.4s ease;
+.gallery img{
+    height:170px;object-fit:cover;border-radius:18px;
+    cursor:pointer;transition:.4s;
 }
-
-.gallery img:hover {
-    transform:scale(1.06);
-}
+.gallery img:hover{transform:scale(1.06)}
 
 /* ================== LIGHTBOX ================== */
-#lightbox {
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.85);
-    display:none;
-    align-items:center;
-    justify-content:center;
+#lightbox{
+    position:fixed;inset:0;background:rgba(0,0,0,.85);
+    display:none;align-items:center;justify-content:center;
     z-index:1000;
 }
-
-#lightbox img {
-    max-width:90%;
-    max-height:90%;
-    border-radius:20px;
-}
+#lightbox img{max-width:90%;max-height:90%;border-radius:20px}
 
 /* ================== REVIEWS ================== */
-.review-card p {
-    font-size:.92rem;
-    color:var(--muted);
-}
-
-.review-author {
-    margin-top:10px;
-    font-weight:600;
-    color:var(--primary);
-}
+.review-card p{font-size:.92rem;color:var(--muted)}
+.review-author{margin-top:10px;font-weight:600;color:var(--primary)}
 
 /* ================== CONTACT ================== */
-.contact-form input,
-.contact-form textarea {
-    width:100%;
-    padding:12px;
-    border-radius:12px;
-    border:1px solid rgba(0,0,0,.15);
-    font-family:inherit;
+.contact-form input,.contact-form textarea{
+    width:100%;padding:12px;border-radius:12px;
+    border:1px solid rgba(0,0,0,.15);font-family:inherit;
 }
-
-.contact-form textarea {
-    min-height:120px;
-    resize:vertical;
-}
-
+.contact-form textarea{min-height:120px;resize:vertical}
 .contact-form input:focus,
-.contact-form textarea:focus {
-    outline:none;
-    border-color:var(--accent);
+.contact-form textarea:focus{
+    outline:none;border-color:var(--accent);
     box-shadow:0 0 0 3px rgba(32,191,107,.2);
 }
 
 /* ================== CTA ================== */
-.cta {
-    text-align:center;
-    padding:60px 30px;
-    background:
-        radial-gradient(circle at top,rgba(32,191,107,.22),transparent);
+.cta{
+    text-align:center;padding:60px 30px;
+    background:radial-gradient(circle at top,rgba(32,191,107,.22),transparent);
     border-radius:36px;
 }
 
-/* ================== ANIMATIONS ================== */
-.reveal {
-    opacity:0;
-    transform:translateY(24px);
-    transition:1s ease;
-}
+/* ================== REVEAL ================== */
+.reveal{opacity:0;transform:translateY(24px);transition:1s}
+.reveal.active{opacity:1;transform:none}
 
-.reveal.active {
-    opacity:1;
-    transform:none;
+/* ================== QR DESKTOP ================== */
+.qr-wrapper{
+    margin-top:30px;
+    display:flex;gap:26px;align-items:center;
+    max-width:520px;
 }
+.qr-wrapper img{
+    width:160px;border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+.qr-details{
+    display:flex;flex-direction:column;gap:6px;
+    font-size:.9rem;color:var(--muted);
+}
+.qr-details strong{color:var(--primary);font-size:1rem}
+
+/* ================== MOBILE QR SCREEN ================== */
+.qr-mobile{
+    display:none;
+    position:fixed;inset:0;z-index:2000;
+    background:radial-gradient(circle at top,rgba(32,191,107,.25),#fff);
+    padding:40px 20px;
+    text-align:center;
+}
+.qr-mobile img{
+    width:220px;margin:30px auto;
+    border-radius:22px;
+    box-shadow:var(--shadow-hover);
+}
+.qr-mobile button{margin-top:20px}
 
 /* ================== FOOTER ================== */
-footer {
-    background:var(--primary);
-    color:#cde5ff;
-    text-align:center;
-    padding:18px;
-    font-size:.8rem;
+footer{
+    background:var(--primary);color:#cde5ff;
+    text-align:center;padding:18px;font-size:.8rem;
 }
 
 /* ================== MOBILE ================== */
-@media(max-width:800px) {
-    .hero { grid-template-columns:1fr; }
-    section.alt { padding:40px 20px; }
+@media(max-width:768px){
+    .hero{grid-template-columns:1fr}
+    section.alt{padding:40px 20px}
+    .qr-desktop{display:none}
+    .qr-mobile{display:block}
 }
 </style>
 </head>
@@ -308,10 +205,7 @@ footer {
 
 <nav class="navbar">
 <div class="nav-inner">
-<div>
-<strong>Ewelina Czachor</strong><br>
-<small>Fizjoterapia • Trening • Wellness</small>
-</div>
+<div><strong>Ewelina Czachor</strong><br><small>Fizjoterapia • Trening • Wellness</small></div>
 <div class="nav-links">
 <a href="#oferta">Oferta</a>
 <a href="#opinie">Opinie</a>
@@ -322,22 +216,24 @@ footer {
 
 <main>
 
+<!-- HERO -->
 <section class="hero reveal">
 <div>
 <h1>Holistyczna fizjoterapia i trening</h1>
-<p>Świadoma praca z ciałem, redukcja bólu, poprawa sprawności i regeneracja – w jednym, spójnym procesie.</p>
+<p>Świadoma praca z ciałem, redukcja bólu, poprawa sprawności i regeneracja.</p>
 <div class="hero-actions">
 <a href="#kontakt" class="btn-primary">Umów konsultację</a>
 <a href="#oferta" class="btn-ghost">Poznaj ofertę</a>
 </div>
 </div>
 <div class="hero-card">
-<img src="portret-ewelina.jpg" alt="Ewelina Czachor">
+<img src="portret-ewelina.jpg" alt="">
 <h3>Twoje ciało. Twój plan.</h3>
-<p>Indywidualne podejście, realne cele i długofalowe efekty.</p>
+<p>Indywidualne podejście i długofalowe efekty.</p>
 </div>
 </section>
 
+<!-- OFERTA -->
 <section id="oferta" class="alt reveal">
 <h2>Oferta</h2>
 <div class="cards-grid">
@@ -347,40 +243,32 @@ footer {
 </div>
 </section>
 
+<!-- GALERIA -->
 <section class="reveal">
 <h2>Galeria</h2>
 <div class="gallery">
-<img src="band.png" alt="">
-<img src="bars.png" alt="">
-<img src="stretching.png" alt="">
-<img src="yoga.png" alt="">
+<img src="band.png"><img src="bars.png"><img src="stretching.png"><img src="yoga.png">
 </div>
 </section>
 
+<!-- OPINIE -->
 <section id="opinie" class="alt reveal">
 <h2>Opinie klientów</h2>
 <div class="reviews-grid">
-<div class="review-card">
-<p>„Ogromna poprawa po kilku spotkaniach – profesjonalizm i empatia.”</p>
-<div class="review-author">Anna K.</div>
-</div>
-<div class="review-card">
-<p>„Najlepsze podejście do treningu i rehabilitacji.”</p>
-<div class="review-author">Michał P.</div>
-</div>
-<div class="review-card">
-<p>„Holistycznie, spokojnie i bardzo skutecznie.”</p>
-<div class="review-author">Karolina S.</div>
-</div>
+<div class="review-card"><p>„Ogromna poprawa – profesjonalizm i empatia.”</p><div class="review-author">Anna K.</div></div>
+<div class="review-card"><p>„Najlepsze podejście do rehabilitacji.”</p><div class="review-author">Michał P.</div></div>
+<div class="review-card"><p>„Spokojnie, holistycznie i skutecznie.”</p><div class="review-author">Karolina S.</div></div>
 </div>
 </section>
 
+<!-- CTA -->
 <section class="cta reveal">
 <h2>Gotowa na zmianę?</h2>
-<p>Umów się na rozmowę i sprawdź, jak możemy poprawić Twój komfort życia.</p>
+<p>Umów się na rozmowę i sprawdź możliwości współpracy.</p>
 <a href="#kontakt" class="btn-primary">Skontaktuj się</a>
 </section>
 
+<!-- KONTAKT -->
 <section id="kontakt" class="reveal">
 <h2>Kontakt</h2>
 <div class="contact-form">
@@ -391,32 +279,46 @@ footer {
 </div>
 </section>
 
+<!-- QR DESKTOP -->
+<section class="alt reveal qr-desktop">
+<h2>Zapisz kontakt</h2>
+<div class="qr-wrapper">
+<img src="qr-ewelina-czachor.png" alt="QR">
+<div class="qr-details">
+<strong>Ewelina Czachor</strong>
+<span>Fizjoterapia • Trening • Wellness</span>
+<span>📞 723 981 333</span>
+<span✉️ LilakL@yahoo.pl</span>
+</div>
+</div>
+</section>
+
 </main>
 
-<footer>
-© 2025 Ewelina Czachor
-</footer>
+<footer>© 2025 Ewelina Czachor</footer>
 
+<!-- MOBILE QR SCREEN -->
+<div class="qr-mobile">
+<h2>Zapisz mój kontakt</h2>
+<p>Zeskanuj kod QR i zapisz dane w telefonie</p>
+<img src="qr-ewelina-czachor.png" alt="QR mobile">
+<a href="#kontakt" class="btn-primary">Napisz do mnie</a>
+</div>
+
+<!-- LIGHTBOX -->
 <div id="lightbox"><img></div>
 
 <script>
-// Reveal on scroll
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => e.isIntersecting && e.target.classList.add('active'));
-},{threshold:0.15});
-reveals.forEach(r => observer.observe(r));
+// Reveal
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('active')),{threshold:.15});
+reveals.forEach(r=>obs.observe(r));
 
 // Lightbox
-const lightbox = document.getElementById('lightbox');
-const lbImg = lightbox.querySelector('img');
-document.querySelectorAll('.gallery img').forEach(img => {
-  img.onclick = () => {
-    lbImg.src = img.src;
-    lightbox.style.display = 'flex';
-  }
-});
-lightbox.onclick = () => lightbox.style.display = 'none';
+const lb=document.getElementById('lightbox');
+const lbImg=lb.querySelector('img');
+document.querySelectorAll('.gallery img').forEach(i=>i.onclick=()=>{lbImg.src=i.src;lb.style.display='flex'});
+lb.onclick=()=>lb.style.display='none';
 </script>
 
 </body>
