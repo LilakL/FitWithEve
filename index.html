@@ -35,6 +35,7 @@ h1,h2,h3{
 a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
 
+/* ================= NAVBAR ================= */
 .navbar{
     position:sticky;top:0;z-index:999;
     background:rgba(10,61,98,.94);
@@ -52,6 +53,7 @@ img{max-width:100%;display:block}
 .nav-links a:hover{background:rgba(255,255,255,.12)}
 .nav-cta{background:var(--accent);font-weight:600}
 
+/* ================= LAYOUT ================= */
 main{max-width:1100px;margin:auto;padding:30px 18px 80px}
 section{margin-top:80px}
 section.alt{
@@ -59,6 +61,7 @@ section.alt{
     padding:50px 30px;border-radius:32px;
 }
 
+/* ================= HERO ================= */
 .hero{
     display:grid;
     grid-template-columns:3fr 2.5fr;
@@ -76,6 +79,7 @@ section.alt{
 .hero p{color:var(--muted)}
 .hero-actions{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
 
+/* ================= BUTTONS ================= */
 .btn-primary{
     background:var(--accent);
     color:#fff;
@@ -98,6 +102,7 @@ section.alt{
     border-radius:999px;
 }
 
+/* ================= CARDS ================= */
 .card,.hero-card{
     background:#fff;
     border-radius:var(--radius);
@@ -120,7 +125,7 @@ section.alt{
     margin-bottom:16px;
 }
 
-/* GALERIA */
+/* ================= GALLERY ================= */
 .gallery-pro{
     margin-top:40px;
     display:grid;
@@ -149,6 +154,7 @@ section.alt{
     color:var(--muted);
 }
 
+/* ================= QR ================= */
 .qr-image{
     display:flex;
     justify-content:center;
@@ -160,6 +166,7 @@ section.alt{
     box-shadow:0 15px 35px rgba(0,0,0,.18);
 }
 
+/* ================= FOOTER ================= */
 footer{
     background:var(--primary);
     color:#cde5ff;
@@ -168,6 +175,7 @@ footer{
     font-size:.8rem;
 }
 
+/* ================= MOBILE ================= */
 @media(max-width:768px){
     .hero{grid-template-columns:1fr}
     section.alt{padding:40px 20px}
@@ -185,6 +193,7 @@ footer{
 </div>
 <div class="nav-links">
 <a href="#oferta">Oferta</a>
+<a href="arbonne.html">Arbonne</a>
 <a href="#galeria">Galeria</a>
 <a href="#kontakt" class="nav-cta">Kontakt</a>
 </div>
@@ -214,7 +223,11 @@ footer{
 <div class="cards-grid">
 <div class="card"><h3>Fizjoterapia</h3><p>Redukcja bólu, terapia manualna, powrót do sprawności.</p></div>
 <div class="card"><h3>Trening personalny</h3><p>Bezpieczny trening funkcjonalny dopasowany do Ciebie.</p></div>
-<div class="card"><h3>Wellness</h3><p>Regeneracja, oddech i holistyczne wsparcie stylu życia.</p></div>
+<div class="card">
+<h3>Wellness</h3>
+<p>Regeneracja, oddech i holistyczne wsparcie stylu życia.</p>
+<a href="arbonne.html" class="btn-primary" style="margin-top:12px;display:inline-block">Poznaj Arbonne</a>
+</div>
 </div>
 </section>
 
@@ -225,12 +238,12 @@ Ruch, świadomość ciała i indywidualne podejście to fundament mojej pracy.
 </p>
 
 <div class="gallery-pro">
-<figure><img src="band.png" alt="Ćwiczenia z gumą oporową"><figcaption>Ćwiczenia z gumą oporową – stabilizacja</figcaption></figure>
-<figure><img src="bars.png" alt="Trening siłowy"><figcaption>Trening siłowy – bezpieczna praca z obciążeniem</figcaption></figure>
-<figure><img src="step.png" alt="Zajęcia grupowe"><figcaption>Zajęcia grupowe – trening funkcjonalny</figcaption></figure>
-<figure><img src="stretching.png" alt="Trening z hantlami"><figcaption>Wzmocnienie całego ciała</figcaption></figure>
-<figure><img src="stripes.png" alt="Taśmy oporowe"><figcaption>Mobilność i siła z taśmami</figcaption></figure>
-<figure><img src="yoga.png" alt="Regeneracja i oddech"><figcaption>Regeneracja, rozluźnianie i oddech</figcaption></figure>
+<figure><img src="band.png" alt=""><figcaption>Ćwiczenia stabilizacyjne</figcaption></figure>
+<figure><img src="bars.png" alt=""><figcaption>Trening siłowy</figcaption></figure>
+<figure><img src="step.png" alt=""><figcaption>Zajęcia funkcjonalne</figcaption></figure>
+<figure><img src="stretching.png" alt=""><figcaption>Mobilność i rozciąganie</figcaption></figure>
+<figure><img src="stripes.png" alt=""><figcaption>Taśmy oporowe</figcaption></figure>
+<figure><img src="yoga.png" alt=""><figcaption>Regeneracja i oddech</figcaption></figure>
 </div>
 </section>
 
