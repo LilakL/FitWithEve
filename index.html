@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
+/* ================= VARIABLES ================= */
 :root{
     --primary:#0a3d62;
     --accent:#20bf6b;
@@ -21,6 +22,7 @@
     --radius:20px;
 }
 
+/* ================= BASE ================= */
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
@@ -175,10 +177,87 @@ section.alt{
     box-shadow:var(--shadow-soft);
     padding:26px;
 }
+.cards-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:26px;
+}
 
-/* ================= MOBILE / FULLSCREEN MENU ================= */
+/* ================= GALERIA ================= */
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:26px;
+    margin-top:40px;
+}
+.gallery-item{
+    background:#fff;
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:var(--shadow-soft);
+    transition:.3s;
+}
+.gallery-item:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--shadow-hover);
+}
+.gallery-item img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+.gallery-caption{
+    padding:16px 18px;
+    font-size:.9rem;
+    color:var(--muted);
+    text-align:center;
+}
+
+/* ================= FORM ================= */
+.contact-wrapper{
+    max-width:680px;
+    margin-top:30px;
+}
+.contact-form{
+    background:#fff;
+    padding:34px;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow-soft);
+    display:grid;
+    gap:22px;
+}
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+.contact-form label{
+    font-size:.85rem;
+    color:var(--muted);
+}
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:14px 16px;
+    border-radius:14px;
+    border:1px solid #dce3ea;
+    font-size:.95rem;
+    font-family:inherit;
+}
+.contact-form textarea{
+    min-height:140px;
+    resize:vertical;
+}
+.contact-note{
+    font-size:.75rem;
+    color:var(--muted);
+    text-align:center;
+}
+
+/* ================= MOBILE + FULLSCREEN MENU ================= */
 @media(max-width:768px){
 
+    .nav-inner{max-width:100%}
     .hamburger{display:flex}
 
     .nav-links{
@@ -203,6 +282,8 @@ section.alt{
     }
 
     .hero{grid-template-columns:1fr}
+    .gallery-grid{grid-template-columns:1fr}
+    .form-grid{grid-template-columns:1fr}
     .brand-logo{max-width:120px}
 }
 </style>
@@ -232,7 +313,92 @@ section.alt{
 </nav>
 
 <main>
-<!-- Twoja treść sekcji – BEZ ZMIAN -->
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+    <div>
+        <h1>Holistyczna fizjoterapia i trening</h1>
+        <p>Świadoma praca z ciałem, redukcja bólu, poprawa sprawności i regeneracja.</p>
+        <div class="hero-actions">
+            <a href="#kontakt" class="btn-primary">Umów konsultację</a>
+            <a href="#oferta" class="btn-ghost">Poznaj ofertę</a>
+        </div>
+    </div>
+
+    <div class="hero-card">
+        <img src="portret-ewelina.jpg" alt="Ewelina Czachor – fizjoterapeutka">
+        <h3>Twoje ciało. Twój plan.</h3>
+        <p>Indywidualne podejście i długofalowe efekty.</p>
+    </div>
+</section>
+
+<!-- ================= OFERTA ================= -->
+<section id="oferta" class="alt">
+    <h2>Oferta</h2>
+    <div class="cards-grid">
+        <div class="card"><h3>Fizjoterapia</h3><p>Redukcja bólu, terapia manualna, powrót do sprawności.</p></div>
+        <div class="card"><h3>Trening personalny</h3><p>Bezpieczny trening funkcjonalny dopasowany do Ciebie.</p></div>
+        <div class="card"><h3>Wellness i Dietetyka</h3><p>Regeneracja i wsparcie stylu życia.</p></div>
+    </div>
+</section>
+
+<!-- ================= GALERIA ================= -->
+<section id="galeria">
+    <h2>Galeria</h2>
+    <p style="color:var(--muted);max-width:60ch">
+        Ruch, regeneracja i świadoma praca z ciałem.
+    </p>
+
+    <div class="gallery-grid">
+        <div class="gallery-item"><img src="band.png" loading="lazy"><div class="gallery-caption">Trening z gumami oporowymi</div></div>
+        <div class="gallery-item"><img src="bars.png" loading="lazy"><div class="gallery-caption">Trening siłowy i stabilizacja</div></div>
+        <div class="gallery-item"><img src="step.png" loading="lazy"><div class="gallery-caption">Zajęcia grupowe fitness</div></div>
+        <div class="gallery-item"><img src="stretching.png" loading="lazy"><div class="gallery-caption">Wzmacnianie z hantlami</div></div>
+        <div class="gallery-item"><img src="stripes.png" loading="lazy"><div class="gallery-caption">Ćwiczenia korekcyjne</div></div>
+        <div class="gallery-item"><img src="yoga.png" loading="lazy"><div class="gallery-caption">Mobilność i regeneracja</div></div>
+    </div>
+</section>
+
+<!-- ================= KONTAKT ================= -->
+<section id="kontakt" class="alt">
+    <h2>Skontaktuj się ze mną</h2>
+
+    <p>
+        <a href="qr-ewelina-czachor.png" style="color:var(--primary);font-weight:600">
+            Pobierz wizytówkę vCard
+        </a>
+    </p>
+
+    <p style="color:var(--muted)">
+        Zeskanuj kod QR, aby zapisać moje dane kontaktowe.
+    </p>
+
+    <img src="qr-ewelina-czachor.png" alt="Kod QR – Ewelina Czachor" style="max-width:200px" loading="lazy">
+
+    <div class="contact-wrapper">
+        <form class="contact-form" action="https://formspree.io/f/xbdjlzpe" method="POST">
+            <div class="form-grid">
+                <div>
+                    <label>Imię</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div>
+                    <label>E-mail</label>
+                    <input type="email" name="email" required>
+                </div>
+            </div>
+
+            <div>
+                <label>Wiadomość</label>
+                <textarea name="message" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary">Wyślij wiadomość</button>
+            <p class="contact-note">Twoje dane są wykorzystywane wyłącznie w celu kontaktu.</p>
+        </form>
+    </div>
+</section>
+
 </main>
 
 <footer style="text-align:center;padding:30px;color:var(--muted)">
