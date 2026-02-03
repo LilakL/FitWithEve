@@ -2,13 +2,10 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>Fit With Eveline – Arbonne Wellness</title>
+<title>Fit With Eveline – Wellness Calculator</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script src="https://js.stripe.com/v3/"></script>
 
 <style>
 :root{
@@ -19,251 +16,230 @@
 --shadow:0 10px 25px rgba(0,0,0,.08);
 }
 
-[data-theme="dark"]{
---bg:#0b1218;
---primary:#e8f2ff;
---muted:#9fb3c8;
-}
-
 *{box-sizing:border-box}
-body{margin:0;font-family:system-ui;background:var(--bg);line-height:1.7;transition:.4s}
-
+body{margin:0;font-family:system-ui;background:var(--bg);line-height:1.6}
 main{max-width:1100px;margin:auto;padding:40px}
-
 h1,h2,h3{font-family:"Playfair Display";color:var(--primary)}
 
-section{opacity:0;transform:translateY(40px);transition:1s cubic-bezier(.19,1,.22,1)}
-section.visible{opacity:1;transform:none}
-
-.hero,.alt,.cta,.card,.tile,.result-card,.email-box{
-background:#fff;border-radius:28px;box-shadow:var(--shadow)
+section{
+background:#fff;
+padding:50px;
+border-radius:28px;
+box-shadow:var(--shadow);
+margin-bottom:50px;
 }
 
-[data-theme="dark"] .hero,
-[data-theme="dark"] .alt,
-[data-theme="dark"] .cta,
-[data-theme="dark"] .card,
-[data-theme="dark"] .tile,
-[data-theme="dark"] .result-card,
-[data-theme="dark"] .email-box{background:#121b22}
+.calc-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:18px;
+}
 
-.hero{padding:70px;margin-bottom:60px}
-.alt{padding:60px 40px;margin-bottom:60px}
-.cta{padding:60px 40px;margin-bottom:60px;text-align:center}
+input{
+width:100%;
+padding:16px;
+border-radius:14px;
+border:1px solid #ddd;
+font-size:1rem;
+}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px}
-.card{padding:26px}
+button{
+background:var(--accent);
+color:white;
+border:none;
+padding:14px 32px;
+border-radius:999px;
+font-weight:600;
+margin-top:25px;
+cursor:pointer;
+}
 
-.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:30px}
-.tile{padding:18px}
-.tile label{font-size:.75rem;color:var(--muted)}
-.tile input,.tile select{width:100%;border:none;font-size:1rem;background:transparent;color:var(--primary)}
+.tiles{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:14px;
+margin-top:20px;
+}
 
-button{background:var(--accent);color:white;padding:14px 32px;border-radius:999px;border:none;font-weight:600;cursor:pointer}
+.tile{
+padding:16px;
+border-radius:18px;
+border:2px solid transparent;
+background:#fafafa;
+cursor:pointer;
+text-align:center;
+transition:.25s ease;
+}
 
-.results{display:none;margin-top:40px;gap:20px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.result-card{padding:24px;text-align:center}
+.tile.active{
+border-color:var(--accent);
+background:#e9fff4;
+transform:translateY(-2px);
+}
 
-.email-box{margin-top:30px;padding:24px}
+.progress{
+height:8px;
+background:#eee;
+border-radius:999px;
+overflow:hidden;
+margin-top:20px;
+}
 
-.toggle{position:fixed;top:12px;right:12px;background:white;padding:8px 14px;border-radius:999px;cursor:pointer;z-index:999}
+.progress span{
+display:block;
+height:100%;
+width:0%;
+background:var(--accent);
+transition:.4s ease;
+}
 
-footer{text-align:center;font-size:.8rem;color:var(--muted);margin:60px 0}
+.results{
+display:none;
+margin-top:30px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.card{
+background:#fff;
+padding:20px;
+border-radius:18px;
+box-shadow:var(--shadow);
+text-align:center;
+}
+
+.card strong{
+font-size:1.6rem;
+}
 
 @media(max-width:768px){
-
-main{max-width:100%;padding:20px 12px}
-
-.hero h1{font-size:2.1rem}
-
-.hero,.alt,.cta{padding:40px 20px}
-
-.grid{grid-auto-flow:column;grid-auto-columns:85%;overflow-x:auto;scroll-snap-type:x mandatory}
-.card{scroll-snap-align:start}
-
-.calc-grid{grid-template-columns:1fr}
-.tile input,.tile select{padding:18px;font-size:1.1rem}
-
+main{padding:20px 12px}
+section{padding:30px 20px}
+input{padding:20px;font-size:1.1rem}
 }
 </style>
 </head>
 
 <body>
 
-<div class="toggle" onclick="toggleTheme()">🌙</div>
-
 <main>
 
-<section class="hero">
-<h1>Arbonne – holistyczne wellness klasy premium</h1>
-<p>Świadome wsparcie ciała, regeneracji i zdrowego stylu życia.</p>
-</section>
-
-<section class="alt">
-<h2>Dlaczego Arbonne?</h2>
-<div class="grid">
-<div class="card">🌿 Czyste formuły</div>
-<div class="card">✨ Premium jakość</div>
-<div class="card">⚖️ Holistyczne podejście</div>
-</div>
-</section>
-
 <section>
-<h2>Ewelina Czachor – Konsultantka Arbonne</h2>
-<p>Indywidualne rekomendacje wellness dopasowane do Twojego stylu życia.</p>
-</section>
-
-<section class="cta" id="calculator">
-
-<h2>Sprawdź swoje zapotrzebowanie</h2>
+<h1>Personal Wellness Calculator</h1>
 
 <div class="calc-grid">
-
-<div class="tile">
-<label>Płeć</label>
-<select id="sex">
-<option value="female">👩 Kobieta</option>
-<option value="male">👨 Mężczyzna</option>
-</select>
+<input id="weight" type="number" placeholder="Waga (kg)">
+<input id="height" type="number" placeholder="Wzrost (cm)">
+<input id="age" type="number" placeholder="Wiek">
 </div>
 
-<div class="tile"><label>Waga</label><input id="weight" type="number"></div>
-<div class="tile"><label>Wzrost</label><input id="height" type="number"></div>
-<div class="tile"><label>Wiek</label><input id="age" type="number"></div>
+<h3>Poziom aktywności</h3>
 
-<div class="tile">
-<label>Aktywność</label>
+<div class="tiles" id="activityTiles">
 
-<select id="activity" onchange="updateActivityHint()">
-
-<option value="1.2">🪑 Siedząca — biuro / brak treningów</option>
-<option value="1.375">🚶 Mała — spacery + 1–3 lekkie treningi</option>
-<option value="1.55">🏃 Średnia — 3–5 treningów tygodniowo</option>
-<option value="1.725">💪 Duża — intensywne treningi + ruch</option>
-<option value="1.9">🔥 Bardzo duża — sport / ciężka praca</option>
-
-</select>
-
-<small id="activityHint" style="display:block;margin-top:8px;color:var(--muted)">
-Siedzący tryb życia, brak regularnych treningów.
-</small>
+<div class="tile" data-val="1.2">🪑 Siedząca<br><small>biuro, brak treningów</small></div>
+<div class="tile" data-val="1.375">🚶 Mała<br><small>spacery + 1–3 treningi</small></div>
+<div class="tile" data-val="1.55">🏃 Średnia<br><small>3–5 treningów</small></div>
+<div class="tile" data-val="1.725">💪 Duża<br><small>5–6 treningów</small></div>
+<div class="tile" data-val="1.9">🔥 Bardzo duża<br><small>sport / praca fizyczna</small></div>
 
 </div>
 
-</div>
+<div class="progress"><span id="progressBar"></span></div>
+
+<p id="autoHint" style="color:var(--muted);margin-top:10px"></p>
 
 <button onclick="calculate()">Oblicz</button>
 
 <div id="results" class="results">
-<div class="result-card">Utrzymanie<br><strong id="maintain"></strong></div>
-<div class="result-card">Redukcja<br><strong id="cut"></strong></div>
-<div class="result-card">Masa<br><strong id="bulk"></strong></div>
-</div>
-
-<div id="plan" class="email-box" style="display:none">
-<h3>Twój plan</h3>
-<p id="planText"></p>
-<input id="email" placeholder="Twój email"><br><br>
-<button onclick="sendPlan()">Wyślij plan + PDF</button>
-<br><br>
-<button onclick="checkout()">Kup pełny program</button>
+<div class="card">Utrzymanie<br><strong id="maintain">0</strong></div>
+<div class="card">Redukcja<br><strong id="cut">0</strong></div>
+<div class="card">Masa<br><strong id="bulk">0</strong></div>
 </div>
 
 </section>
 
 </main>
 
-<footer>© 2025 Fit With Eveline</footer>
-
 <script>
-emailjs.init("YOUR_PUBLIC_KEY");
+let activity=1.2;
 
-const stripe = Stripe("YOUR_STRIPE_PUBLIC_KEY");
+/* TILE SELECTION + PROGRESS */
 
-function checkout(){
-stripe.redirectToCheckout({
-lineItems:[{price:"YOUR_STRIPE_PRICE_ID",quantity:1}],
-mode:"payment",
-successUrl:location.href+"?success",
-cancelUrl:location.href
+document.querySelectorAll(".tile").forEach((t,i)=>{
+t.onclick=()=>{
+document.querySelectorAll(".tile").forEach(x=>x.classList.remove("active"));
+t.classList.add("active");
+activity=parseFloat(t.dataset.val);
+document.getElementById("progressBar").style.width=((i+1)/5*100)+"%";
+};
+});
+
+/* AUTO REKOMENDACJA */
+
+function autoRecommend(){
+
+const w=+weight.value;
+const h=+height.value/100;
+const a=+age.value;
+
+if(!w||!h||!a)return;
+
+let bmi=w/(h*h);
+
+let rec="1.375";
+
+if(bmi<22 && a<40) rec="1.55";
+if(bmi>28) rec="1.2";
+
+document.querySelectorAll(".tile").forEach(t=>{
+if(t.dataset.val===rec){
+t.click();
+autoHint.innerText="👉 Automatycznie zasugerowaliśmy poziom aktywności na podstawie Twoich danych.";
+}
 });
 }
 
-function updateActivityHint(){
+["weight","height","age"].forEach(id=>{
+document.getElementById(id).addEventListener("blur",autoRecommend);
+});
 
-const hints={
-"1.2":"Biuro + brak treningów.",
-"1.375":"Spacery + 1–3 lekkie treningi.",
-"1.55":"Regularne 3–5 treningów tygodniowo.",
-"1.725":"Codzienne intensywne treningi.",
-"1.9":"Sport wyczynowy / ciężka praca fizyczna."
-};
+/* ANIMATED COUNTER */
 
-activityHint.innerText=hints[activity.value];
+function animateValue(el, start, end, duration){
+
+let startTime=null;
+
+function step(timestamp){
+if(!startTime) startTime=timestamp;
+let progress=Math.min((timestamp-startTime)/duration,1);
+el.innerText=Math.floor(progress*(end-start)+start)+" kcal";
+if(progress<1) requestAnimationFrame(step);
 }
+
+requestAnimationFrame(step);
+}
+
+/* KALKULATOR */
 
 function calculate(){
 
-let w=+weight.value,h=+height.value,a=+age.value;
+const w=+weight.value;
+const h=+height.value;
+const a=+age.value;
+
 if(!w||!h||!a)return alert("Uzupełnij dane");
 
-let bmr=sex.value==="female"?10*w+6.25*h-5*a-161:10*w+6.25*h-5*a+5;
-let tdee=Math.round(bmr*activity.value);
-
-maintain.innerText=tdee+" kcal";
-cut.innerText=tdee-400+" kcal";
-bulk.innerText=tdee+300+" kcal";
+let bmr=10*w+6.25*h-5*a-161;
+let tdee=Math.round(bmr*activity);
 
 results.style.display="grid";
 
-planText.innerText=`Redukcja: ${tdee-400} kcal.
-8–10k kroków dziennie.
-3 treningi tygodniowo.
-30g białka w każdym posiłku.`;
-
-plan.style.display="block";
+animateValue(maintain,0,tdee,800);
+animateValue(cut,0,tdee-400,900);
+animateValue(bulk,0,tdee+300,1000);
 }
-
-function sendPlan(){
-if(!email.value)return alert("Podaj email");
-
-generatePDF();
-
-emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
-to_email:email.value,
-cc_email:"fitwitheveline@gmail.com",
-maintain:maintain.innerText,
-cut:cut.innerText,
-bulk:bulk.innerText,
-plan:planText.innerText
-}).then(()=>alert("Plan wysłany ❤️"));
-}
-
-function generatePDF(){
-const {jsPDF}=window.jspdf;
-const doc=new jsPDF();
-doc.text("Fit With Eveline – Wellness Plan",20,20);
-doc.text(planText.innerText,20,40);
-doc.save("plan.pdf");
-}
-
-/* Apple-style reveal */
-
-document.querySelectorAll("section").forEach(s=>{
-new IntersectionObserver(e=>{
-if(e[0].isIntersecting)s.classList.add("visible");
-}).observe(s);
-});
-
-/* Dark mode */
-
-function toggleTheme(){
-let t=document.body.getAttribute("data-theme");
-document.body.setAttribute("data-theme",t==="dark"?"":"dark");
-localStorage.theme=document.body.getAttribute("data-theme");
-}
-
-if(localStorage.theme==="dark")document.body.setAttribute("data-theme","dark");
 </script>
 
 </body>
