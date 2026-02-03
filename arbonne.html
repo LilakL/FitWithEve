@@ -2,11 +2,12 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>Fit with Eveline – Wellness Calculator</title>
+<title>Fit With Eveline – Wellness Calculator</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
 <style>
 :root{
@@ -26,7 +27,7 @@ background:var(--bg);
 
 main{max-width:1000px;margin:auto;padding:40px}
 
-h1,h2{font-family:"Playfair Display";color:var(--primary)}
+h1,h2,h3{font-family:"Playfair Display";color:var(--primary)}
 
 .hero{
 background:#fff;
@@ -100,26 +101,6 @@ border-radius:22px;
 box-shadow:var(--shadow);
 }
 
-.admin{
-margin-top:80px;
-background:#fff;
-padding:30px;
-border-radius:22px;
-box-shadow:var(--shadow);
-display:none;
-}
-
-.admin table{
-width:100%;
-border-collapse:collapse;
-font-size:.85rem;
-}
-
-.admin td,.admin th{
-border-bottom:1px solid #eee;
-padding:8px;
-}
-
 .fade{
 opacity:0;
 transform:translateY(30px);
@@ -130,6 +111,13 @@ transition:.8s ease;
 opacity:1;
 transform:none;
 }
+
+footer{
+margin-top:80px;
+text-align:center;
+font-size:.8rem;
+color:var(--muted);
+}
 </style>
 </head>
 
@@ -139,7 +127,7 @@ transform:none;
 
 <section class="hero fade">
 <h1>Personal Wellness Calculator</h1>
-<p>Oblicz kalorie, otrzymaj indywidualny plan i zapisz wynik jako PDF.</p>
+<p>Oblicz kalorie, otrzymaj indywidualny plan i PDF na email.</p>
 
 <div class="calc-grid">
 
@@ -183,20 +171,9 @@ transform:none;
 
 <div id="results" class="results">
 
-<div class="card">
-Utrzymanie
-<strong id="maintain"></strong>
-</div>
-
-<div class="card">
-Redukcja
-<strong id="cut"></strong>
-</div>
-
-<div class="card">
-Masa
-<strong id="bulk"></strong>
-</div>
+<div class="card">Utrzymanie<br><strong id="maintain"></strong></div>
+<div class="card">Redukcja<br><strong id="cut"></strong></div>
+<div class="card">Budowa masy<br><strong id="bulk"></strong></div>
 
 </div>
 
@@ -206,19 +183,20 @@ Masa
 
 <input id="email" placeholder="Twój email">
 <br><br>
-<button onclick="saveLead()">Zapisz + PDF</button>
+<button onclick="sendPlan()">Wyślij plan + PDF</button>
 </div>
 
 </section>
 
-<section class="admin" id="admin">
-<h2>Panel Admin (local)</h2>
-<table id="leadsTable"></table>
-</section>
+<footer>
+© Fit With Eveline
+</footer>
 
 </main>
 
 <script>
+emailjs.init("YOUR_PUBLIC_KEY");
+
 const fades=document.querySelectorAll('.fade');
 setTimeout(()=>fades.forEach(f=>f.classList.add("visible")),300);
 
@@ -240,33 +218,33 @@ bulk.innerText=tdee+300+" kcal";
 results.style.display="grid";
 
 planText.innerText=
-`Rekomendujemy ${tdee-400} kcal na redukcji.
-Codziennie: 8–10k kroków, 3 treningi tygodniowo,
-30g białka w każdym posiłku.
-Suplementacja + regeneracja wg konsultacji.`;
+`Rekomendacja kalorii: ${tdee-400} kcal (redukcja)
+
+Codziennie: 8–10 tys. kroków
+3 treningi tygodniowo
+30g białka w każdym posiłku
+
+Suplementacja i regeneracja – indywidualnie wg konsultacji.`;
 
 plan.style.display="block";
 }
 
-function saveLead(){
+function sendPlan(){
 
 if(!email.value)return alert("Podaj email");
 
-let leads=JSON.parse(localStorage.getItem("leads")||"[]");
-
-leads.push({
-email:email.value,
-maintain:maintain.innerText,
-cut:cut.innerText,
-bulk:bulk.innerText,
-date:new Date().toLocaleString()
-});
-
-localStorage.setItem("leads",JSON.stringify(leads));
-
 generatePDF();
-loadAdmin();
-alert("Zapisano + wygenerowano PDF");
+
+emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
+to_email: email.value,
+cc_email: "fitwitheveline@gmail.com",
+maintain: maintain.innerText,
+cut: cut.innerText,
+bulk: bulk.innerText,
+plan: planText.innerText
+}).then(()=>{
+alert("Plan wysłany na email ❤️");
+});
 }
 
 function generatePDF(){
@@ -274,30 +252,14 @@ function generatePDF(){
 const { jsPDF } = window.jspdf;
 const doc=new jsPDF();
 
-doc.text("Fit With Eveline – Personal Plan",20,20);
+doc.text("Fit With Eveline – Personal Wellness Plan",20,20);
 doc.text("Utrzymanie: "+maintain.innerText,20,40);
 doc.text("Redukcja: "+cut.innerText,20,55);
-doc.text("Masa: "+bulk.innerText,20,70);
+doc.text("Budowa masy: "+bulk.innerText,20,70);
 doc.text(planText.innerText,20,100);
 
 doc.save("wellness-plan.pdf");
 }
-
-function loadAdmin(){
-
-admin.style.display="block";
-let leads=JSON.parse(localStorage.getItem("leads")||"[]");
-
-let html="<tr><th>Email</th><th>Data</th><th>Utrzymanie</th></tr>";
-
-leads.forEach(l=>{
-html+=`<tr><td>${l.email}</td><td>${l.date}</td><td>${l.maintain}</td></tr>`;
-});
-
-leadsTable.innerHTML=html;
-}
-
-loadAdmin();
 </script>
 
 </body>
