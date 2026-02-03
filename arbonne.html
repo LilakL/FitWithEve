@@ -173,7 +173,14 @@ Rekomenduję rozwiązania dopasowane do stylu życia i celów klienta.
 
 <h2>Sprawdź swoje zapotrzebowanie kaloryczne</h2>
 
-<div class="calc-grid">
+<h3>Płeć</h3>
+
+<div class="tiles" id="sexTiles">
+<div class="tile active" data-sex="female">👩 Kobieta</div>
+<div class="tile" data-sex="male">👨 Mężczyzna</div>
+</div>
+
+<div class="calc-grid" style="margin-top:25px">
 <input id="weight" type="number" placeholder="Waga (kg)">
 <input id="height" type="number" placeholder="Wzrost (cm)">
 <input id="age" type="number" placeholder="Wiek">
@@ -209,12 +216,23 @@ Rekomenduję rozwiązania dopasowane do stylu życia i celów klienta.
 
 <script>
 let activity=1.2;
+let sex="female";
 
-/* kafelki + progress */
+/* wybór płci */
 
-document.querySelectorAll(".tile").forEach((t,i)=>{
+document.querySelectorAll("#sexTiles .tile").forEach(t=>{
 t.onclick=()=>{
-document.querySelectorAll(".tile").forEach(x=>x.classList.remove("active"));
+document.querySelectorAll("#sexTiles .tile").forEach(x=>x.classList.remove("active"));
+t.classList.add("active");
+sex=t.dataset.sex;
+};
+});
+
+/* kafelki aktywności */
+
+document.querySelectorAll(".tiles .tile[data-val]").forEach((t,i)=>{
+t.onclick=()=>{
+document.querySelectorAll(".tiles .tile[data-val]").forEach(x=>x.classList.remove("active"));
 t.classList.add("active");
 activity=parseFloat(t.dataset.val);
 progressBar.style.width=((i+1)/5*100)+"%";
@@ -237,7 +255,7 @@ let rec="1.375";
 if(bmi<22 && a<40) rec="1.55";
 if(bmi>28) rec="1.2";
 
-document.querySelectorAll(".tile").forEach(t=>{
+document.querySelectorAll(".tile[data-val]").forEach(t=>{
 if(t.dataset.val===rec){
 t.click();
 autoHint.innerText="👉 Automatycznie zasugerowaliśmy poziom aktywności.";
@@ -272,7 +290,10 @@ const a=+age.value;
 
 if(!w||!h||!a)return alert("Uzupełnij dane");
 
-let bmr=10*w+6.25*h-5*a-161;
+let bmr = sex==="female"
+ ? 10*w + 6.25*h - 5*a - 161
+ : 10*w + 6.25*h - 5*a + 5;
+
 let tdee=Math.round(bmr*activity);
 
 results.style.display="grid";
