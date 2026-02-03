@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>Fit With Eveline – Wellness Calculator</title>
+<title>Fit With Eveline – Arbonne Wellness</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
@@ -29,6 +29,23 @@ box-shadow:var(--shadow);
 margin-bottom:50px;
 }
 
+.alt{
+background:linear-gradient(180deg,transparent,rgba(10,61,98,.04),transparent);
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:26px;
+}
+
+.card{
+background:#fff;
+padding:26px;
+border-radius:22px;
+box-shadow:var(--shadow);
+}
+
 .calc-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -41,17 +58,6 @@ padding:16px;
 border-radius:14px;
 border:1px solid #ddd;
 font-size:1rem;
-}
-
-button{
-background:var(--accent);
-color:white;
-border:none;
-padding:14px 32px;
-border-radius:999px;
-font-weight:600;
-margin-top:25px;
-cursor:pointer;
 }
 
 .tiles{
@@ -68,7 +74,7 @@ border:2px solid transparent;
 background:#fafafa;
 cursor:pointer;
 text-align:center;
-transition:.25s ease;
+transition:.25s;
 }
 
 .tile.active{
@@ -93,6 +99,17 @@ background:var(--accent);
 transition:.4s ease;
 }
 
+button{
+background:var(--accent);
+color:white;
+border:none;
+padding:14px 32px;
+border-radius:999px;
+font-weight:600;
+margin-top:25px;
+cursor:pointer;
+}
+
 .results{
 display:none;
 margin-top:30px;
@@ -101,7 +118,7 @@ grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:20px;
 }
 
-.card{
+.result-card{
 background:#fff;
 padding:20px;
 border-radius:18px;
@@ -109,7 +126,7 @@ box-shadow:var(--shadow);
 text-align:center;
 }
 
-.card strong{
+.result-card strong{
 font-size:1.6rem;
 }
 
@@ -126,7 +143,35 @@ input{padding:20px;font-size:1.1rem}
 <main>
 
 <section>
-<h1>Personal Wellness Calculator</h1>
+<h1>Arbonne – holistyczne wellness klasy premium</h1>
+<p>
+Arbonne to globalna marka wellness oparta na filozofii czystych składników,
+świadomej pielęgnacji i wspierania organizmu w sposób zgodny z naturą.
+Produkty Arbonne stanowią doskonałe uzupełnienie pracy z ciałem, regeneracji
+oraz zdrowego stylu życia.
+</p>
+</section>
+
+<section class="alt">
+<h2>Dlaczego Arbonne?</h2>
+<div class="grid">
+<div class="card">🌿 Czyste formuły</div>
+<div class="card">✨ Jakość klasy premium</div>
+<div class="card">⚖️ Holistyczne wsparcie</div>
+</div>
+</section>
+
+<section>
+<h2>Ewelina Czachor – Konsultantka Arbonne</h2>
+<p>
+Jako fizjoterapeutka i trener personalny pracuję z ciałem świadomie i długofalowo.
+Rekomenduję rozwiązania dopasowane do stylu życia i celów klienta.
+</p>
+</section>
+
+<section>
+
+<h2>Sprawdź swoje zapotrzebowanie kaloryczne</h2>
 
 <div class="calc-grid">
 <input id="weight" type="number" placeholder="Waga (kg)">
@@ -136,9 +181,9 @@ input{padding:20px;font-size:1.1rem}
 
 <h3>Poziom aktywności</h3>
 
-<div class="tiles" id="activityTiles">
+<div class="tiles">
 
-<div class="tile" data-val="1.2">🪑 Siedząca<br><small>biuro, brak treningów</small></div>
+<div class="tile" data-val="1.2">🪑 Siedząca<br><small>biuro / brak treningów</small></div>
 <div class="tile" data-val="1.375">🚶 Mała<br><small>spacery + 1–3 treningi</small></div>
 <div class="tile" data-val="1.55">🏃 Średnia<br><small>3–5 treningów</small></div>
 <div class="tile" data-val="1.725">💪 Duża<br><small>5–6 treningów</small></div>
@@ -153,9 +198,9 @@ input{padding:20px;font-size:1.1rem}
 <button onclick="calculate()">Oblicz</button>
 
 <div id="results" class="results">
-<div class="card">Utrzymanie<br><strong id="maintain">0</strong></div>
-<div class="card">Redukcja<br><strong id="cut">0</strong></div>
-<div class="card">Masa<br><strong id="bulk">0</strong></div>
+<div class="result-card">Utrzymanie<br><strong id="maintain">0</strong></div>
+<div class="result-card">Redukcja<br><strong id="cut">0</strong></div>
+<div class="result-card">Masa<br><strong id="bulk">0</strong></div>
 </div>
 
 </section>
@@ -165,18 +210,18 @@ input{padding:20px;font-size:1.1rem}
 <script>
 let activity=1.2;
 
-/* TILE SELECTION + PROGRESS */
+/* kafelki + progress */
 
 document.querySelectorAll(".tile").forEach((t,i)=>{
 t.onclick=()=>{
 document.querySelectorAll(".tile").forEach(x=>x.classList.remove("active"));
 t.classList.add("active");
 activity=parseFloat(t.dataset.val);
-document.getElementById("progressBar").style.width=((i+1)/5*100)+"%";
+progressBar.style.width=((i+1)/5*100)+"%";
 };
 });
 
-/* AUTO REKOMENDACJA */
+/* auto rekomendacja */
 
 function autoRecommend(){
 
@@ -187,7 +232,6 @@ const a=+age.value;
 if(!w||!h||!a)return;
 
 let bmi=w/(h*h);
-
 let rec="1.375";
 
 if(bmi<22 && a<40) rec="1.55";
@@ -196,7 +240,7 @@ if(bmi>28) rec="1.2";
 document.querySelectorAll(".tile").forEach(t=>{
 if(t.dataset.val===rec){
 t.click();
-autoHint.innerText="👉 Automatycznie zasugerowaliśmy poziom aktywności na podstawie Twoich danych.";
+autoHint.innerText="👉 Automatycznie zasugerowaliśmy poziom aktywności.";
 }
 });
 }
@@ -205,23 +249,20 @@ autoHint.innerText="👉 Automatycznie zasugerowaliśmy poziom aktywności na po
 document.getElementById(id).addEventListener("blur",autoRecommend);
 });
 
-/* ANIMATED COUNTER */
+/* animowane kcal */
 
-function animateValue(el, start, end, duration){
-
+function animateValue(el,start,end,duration){
 let startTime=null;
-
-function step(timestamp){
-if(!startTime) startTime=timestamp;
-let progress=Math.min((timestamp-startTime)/duration,1);
-el.innerText=Math.floor(progress*(end-start)+start)+" kcal";
-if(progress<1) requestAnimationFrame(step);
+function step(ts){
+if(!startTime)startTime=ts;
+let p=Math.min((ts-startTime)/duration,1);
+el.innerText=Math.floor(p*(end-start)+start)+" kcal";
+if(p<1)requestAnimationFrame(step);
 }
-
 requestAnimationFrame(step);
 }
 
-/* KALKULATOR */
+/* kalkulator */
 
 function calculate(){
 
